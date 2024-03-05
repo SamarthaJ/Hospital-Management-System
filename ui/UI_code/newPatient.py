@@ -82,6 +82,12 @@ class Mainboard(customtkinter.CTkFrame):
         self.rblock.set(self.sel_rblock)
         self.rnum.set(self.sel_rnum)
 
+
+        self.addbtn = customtkinter.CTkButton(self, text="Add New Patient",command=self.addnew)
+
+    def addnew():
+        pass
+
     def room_block_sel(self,get):
         self.sel_rblock=get
         print(self.sel_rblock)
