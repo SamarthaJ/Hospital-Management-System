@@ -111,6 +111,6 @@ def revenue():
 def appointment_lst():
     db=li.create_connection()
     mycursor=db.cursor()
-    mycursor.execute("SELECT p.name AS patient_name, d.dept_name, a.time AS appointment_time FROM appointment a JOIN patient p ON a.p_id = p.p_id JOIN department d ON a.dept_id = d.dept_id ")
+    mycursor.execute("SELECT p.name AS patient_name, d.name, a.time AS appointment_time FROM appointment a JOIN patient p ON a.p_id = p.p_id JOIN employee d ON a.emp_id = d.emp_id ")
     arr=[list(i) for i in mycursor]
     return arr
