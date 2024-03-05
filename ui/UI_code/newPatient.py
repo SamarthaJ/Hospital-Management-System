@@ -18,13 +18,7 @@ class Mainboard(customtkinter.CTkFrame):
         # Room_number varchar | Aphanumeric
 
 
-        self.name = customtkinter.CTkEntry(self, placeholder_text="Your MOM'S Name")
-        self.aadhar = customtkinter.CTkEntry(self, placeholder_text="Your MOM Social Security")
-        self.dob = customtkinter.CTkEntry(self, placeholder_text="Your MOM non virgin date")
-        self.phone = customtkinter.CTkEntry(self, placeholder_text="Your MOM's Phone number ")
-        self.email = customtkinter.CTkEntry(self, placeholder_text="Your MOM's sex Mail")
-        self.address = customtkinter.CTkEntry(self, placeholder_text="Your MOM's FUCK address")
-        self.ins = customtkinter.CTkEntry(self, placeholder_text="Child Support ⚠️ WARNING ⚠️")
+
         self.pid = customtkinter.CTkEntry(self, placeholder_text="Patient ID")
         self.name = customtkinter.CTkEntry(self, placeholder_text="Name")
         self.aadhar = customtkinter.CTkEntry(self, placeholder_text="Aadhaar number")
@@ -84,6 +78,8 @@ class Mainboard(customtkinter.CTkFrame):
 
 
         self.addbtn = customtkinter.CTkButton(self, text="Add New Patient",command=self.addnew)
+
+        self.addbtn.grid(row=10, column=0,padx=5,pady=5)
 
     def addnew():
         pass
