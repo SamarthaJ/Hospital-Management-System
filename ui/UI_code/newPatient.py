@@ -26,3 +26,7 @@ class Mainboard(customtkinter.CTkFrame):
         self.email = customtkinter.CTkEntry(self, placeholder_text="Your MOM's sex Mail")
         self.address = customtkinter.CTkEntry(self, placeholder_text="Your MOM's FUCK address")
         self.ins = customtkinter.CTkEntry(self, placeholder_text="Child Support ⚠️ WARNING ⚠️")
+
+        
+
+        self.pid.grid()
