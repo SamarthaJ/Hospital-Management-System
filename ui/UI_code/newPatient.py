@@ -25,6 +25,16 @@ class Mainboard(customtkinter.CTkFrame):
         self.email = customtkinter.CTkEntry(self, placeholder_text="Your MOM's sex Mail")
         self.address = customtkinter.CTkEntry(self, placeholder_text="Your MOM's FUCK address")
         self.ins = customtkinter.CTkEntry(self, placeholder_text="Child Support ⚠️ WARNING ⚠️")
+        self.pid = customtkinter.CTkEntry(self, placeholder_text="Patient ID")
+        self.name = customtkinter.CTkEntry(self, placeholder_text="Name")
+        self.aadhar = customtkinter.CTkEntry(self, placeholder_text="Aadhaar number")
+        self.dob = customtkinter.CTkEntry(self, placeholder_text="Date of Birth")
+        self.phone = customtkinter.CTkEntry(self, placeholder_text="Phone number ")
+        self.email = customtkinter.CTkEntry(self, placeholder_text="Email")
+        self.address = customtkinter.CTkEntry(self, placeholder_text="Address")
+        self.ins = customtkinter.CTkEntry(self, placeholder_text="Insurence ID")
+        self.ins = customtkinter.CTkEntry(self, placeholder_text="Sex")
+
 
         newPID = "New PID here generated automatically"
 
