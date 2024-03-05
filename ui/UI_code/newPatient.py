@@ -18,7 +18,6 @@ class Mainboard(customtkinter.CTkFrame):
         # Room_number varchar | Aphanumeric
 
 
-        self.pid = customtkinter.CTkEntry(self, placeholder_text="Your MOM's Walmart ID")
         self.name = customtkinter.CTkEntry(self, placeholder_text="Your MOM'S Name")
         self.aadhar = customtkinter.CTkEntry(self, placeholder_text="Your MOM Social Security")
         self.dob = customtkinter.CTkEntry(self, placeholder_text="Your MOM non virgin date")
@@ -27,6 +26,56 @@ class Mainboard(customtkinter.CTkFrame):
         self.address = customtkinter.CTkEntry(self, placeholder_text="Your MOM's FUCK address")
         self.ins = customtkinter.CTkEntry(self, placeholder_text="Child Support ⚠️ WARNING ⚠️")
 
-        
+        newPID = "New PID here generated automatically"
 
-        self.pid.grid()
+        self.pid_lab = customtkinter.CTkLabel(self, text=f"{newPID}")
+        self.name_lab = customtkinter.CTkLabel(self, text="Name")
+        self.aadhar_lab = customtkinter.CTkLabel(self,text="Aadhar")
+        self.dob_lab = customtkinter.CTkLabel(self, text="Date of Birth")
+        self.phone_lab = customtkinter.CTkLabel(self, text="Phone")
+        self.email_lab = customtkinter.CTkLabel(self, text="Email")
+        self.address_lab = customtkinter.CTkLabel(self,text="Address")
+        self.ins_lab = customtkinter.CTkLabel(self, text="Insorence asjdjjashdjkhassd")
+
+        self.rblock = customtkinter.CTkOptionMenu(self,command=self.room_block_sel, values=['das','asd'])
+        self.rnum = customtkinter.CTkOptionMenu(self,command=self.room_num_sel, values=['1','2'])
+
+        self.rblock_lab=customtkinter.CTkLabel(self,text="Room Block")
+        self.rnum_lab=customtkinter.CTkLabel(self,text="Room Number")
+
+        self.pid_lab.grid(row=0,column=1,padx=5,pady=5)
+        self.name.grid(row=1,column=1,padx=5,pady=5)
+        self.aadhar.grid(row=2,column=1,padx=5,pady=5)
+        self.dob.grid(row=3,column=1,padx=5,pady=5)
+        self.phone.grid(row=4,column=1,padx=5,pady=5)
+        self.email.grid(row=5,column=1,padx=5,pady=5)
+        self.address.grid(row=6,column=1,padx=5,pady=5)
+        self.ins.grid(row=7,column=1,padx=5,pady=5)
+
+        self.sel_rblock = '--Please-Select--'
+        self.sel_rnum = '--Please-Select--'
+
+        self.name_lab.grid(row=1,column=0,padx=5,pady=5)
+        self.aadhar_lab.grid(row=2,column=0,padx=5,pady=5)
+        self.dob_lab.grid(row=3,column=0,padx=5,pady=5)
+        self.phone_lab.grid(row=4,column=0,padx=5,pady=5)
+        self.email_lab.grid(row=5,column=0,padx=5,pady=5)
+        self.address_lab.grid(row=6,column=0,padx=5,pady=5)
+        self.ins_lab.grid(row=7,column=0,padx=5,pady=5)
+
+        self.rblock.grid(row=8, column=1,padx=5,pady=5)
+        self.rnum.grid(row=9, column=1,padx=5,pady=5)
+
+        self.rblock_lab.grid(row=8, column=0,padx=5,pady=5)
+        self.rnum_lab.grid(row=9, column=0,padx=5,pady=5)
+
+        self.rblock.set(self.sel_rblock)
+        self.rnum.set(self.sel_rnum)
+
+    def room_block_sel(self,get):
+        self.sel_rblock=get
+        print(self.sel_rblock)
+    
+    def room_num_sel(self,get):
+        self.sel_rnum=get
+        print(self.sel_rnum)
