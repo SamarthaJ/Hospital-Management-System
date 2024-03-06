@@ -1,5 +1,6 @@
 import customtkinter
 from PIL import Image
+import querr as q
 
 class Mainboard(customtkinter.CTkFrame):
     def __init__(self, master, width:int = 720,height:int = 600, **kwargs):
@@ -19,7 +20,6 @@ class Mainboard(customtkinter.CTkFrame):
 
 
 
-        self.pid = customtkinter.CTkEntry(self, placeholder_text="Patient ID")
         self.name = customtkinter.CTkEntry(self, placeholder_text="Name")
         self.aadhar = customtkinter.CTkEntry(self, placeholder_text="Aadhaar number")
         self.dob = customtkinter.CTkEntry(self, placeholder_text="Date of Birth")
@@ -27,7 +27,9 @@ class Mainboard(customtkinter.CTkFrame):
         self.email = customtkinter.CTkEntry(self, placeholder_text="Email")
         self.address = customtkinter.CTkEntry(self, placeholder_text="Address")
         self.ins = customtkinter.CTkEntry(self, placeholder_text="Insurence ID")
-        self.ins = customtkinter.CTkEntry(self, placeholder_text="Sex")
+        self.sex = customtkinter.CTkEntry(self, placeholder_text="Sex")
+
+        
 
 
         newPID = "New PID here generated automatically"
@@ -39,10 +41,10 @@ class Mainboard(customtkinter.CTkFrame):
         self.phone_lab = customtkinter.CTkLabel(self, text="Phone")
         self.email_lab = customtkinter.CTkLabel(self, text="Email")
         self.address_lab = customtkinter.CTkLabel(self,text="Address")
-        self.ins_lab = customtkinter.CTkLabel(self, text="Insorence asjdjjashdjkhassd")
+        self.ins_lab = customtkinter.CTkLabel(self, text="Insurence Id")
 
-        self.rblock = customtkinter.CTkOptionMenu(self,command=self.room_block_sel, values=['das','asd'])
-        self.rnum = customtkinter.CTkOptionMenu(self,command=self.room_num_sel, values=['1','2'])
+        self.rblock = customtkinter.CTkOptionMenu(self,command=self.room_block_sel, values=q.block_aval())
+        self.rnum = customtkinter.CTkOptionMenu(self,command=self.room_num_sel, values=q.avaliable_rooms())
 
         self.rblock_lab=customtkinter.CTkLabel(self,text="Room Block")
         self.rnum_lab=customtkinter.CTkLabel(self,text="Room Number")
@@ -81,7 +83,18 @@ class Mainboard(customtkinter.CTkFrame):
 
         self.addbtn.grid(row=10, column=0,padx=5,pady=5)
 
-    def addnew():
+    def addnew(self):
+        self.name_data = self.name.get()
+        self.aadhar_data = self.aadhar.get()
+        self.dob_data = self.dob.get()
+        self.phone_data = self.phone.get()
+        self.email_data = self.email.get()
+        self.address_data = self.address.get()
+        self.ins_data = self.ins.get()
+        # use self.sel_rblock for to get the block number from option menu
+        # use self.sel_rnum for to get the room number from option menu
+
+        q.add_patient(name=self.name_data,aadhar=self.aadhar_data,dob=self.dob_data,mobile=self.phone_data,email=self.email_data,)
         pass
 
     def room_block_sel(self,get):

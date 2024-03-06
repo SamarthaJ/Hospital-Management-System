@@ -114,3 +114,30 @@ def appointment_lst():
     mycursor.execute("SELECT p.name AS patient_name, d.name, a.time AS appointment_time FROM appointment a JOIN patient p ON a.p_id = p.p_id JOIN employee d ON a.emp_id = d.emp_id ")
     arr=[list(i) for i in mycursor]
     return arr
+
+def avaliable_rooms():
+    db=li.create_connection()
+    mycursor=db.cursor()
+    a=[]
+    mycursor.execute("SELECT r.r_no FROM Room r LEFT JOIN affiliated a ON r.r_no = a.r_no WHERE a.r_no IS NULL;")
+    for x in mycursor:
+        val=x[0]
+        a.append(val)
+    return(a)
+
+def block_aval():
+    db=li.create_connection()
+    mycursor=db.cursor()
+    a=[]
+    mycursor.execute("SELECT DISTINCT b_name FROM Room;")
+    for x in mycursor:
+        val=x[0]
+        a.append(val)
+    return a
+
+def add_patient(pid,name,aadhar,dob,mobile,email,address,insu_id,sex):
+    db=li.create_connection()
+    mycursor=db.cursor()
+    mycursor.execute(f"insert into patient values('{pid}','{name}','{aadhar}','{dob}','{mobile}','{email}','{address}','{insu_id}','{sex}')")
+    db.commit()
+    
