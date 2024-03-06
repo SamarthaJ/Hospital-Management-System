@@ -70,7 +70,7 @@ class appointmentlist(customtkinter.CTkFrame):
         Time = customtkinter.CTkLabel(self, text="Time: "+time,text_color="black")
         Department = customtkinter.CTkLabel(self, text="Dept: "+department,text_color="black")
         Phone = customtkinter.CTkButton(self,text="phone",width=20)
-        Blank = customtkinter.CTkLabel(self, width=30, height=30, text=" ")
+        Blank = customtkinter.CTkLabel(self, width=10, height=30, text=" ")
         Name.grid(row=0,column=0,padx=10,pady=0)
         Time.grid(row=0,column=1,padx=10,pady=0)
         Department.grid(row=0,column=2,padx=10,pady=0)
