@@ -7,7 +7,7 @@ class appointmentlist(customtkinter.CTkFrame):
         self.grid_columnconfigure((0,1,2,3,4),weight=1)
         Name = customtkinter.CTkLabel(self, text="Name: "+name,text_color="black")
         Time = customtkinter.CTkLabel(self, text="Time: "+time,text_color="black")
-        Department = customtkinter.CTkLabel(self, text="Dept: "+department,text_color="black")
+        Department = customtkinter.CTkLabel(self, text="With: "+department,text_color="black")
         Phone = customtkinter.CTkButton(self,text="phone",width=20)
         Blank = customtkinter.CTkLabel(self, width=30, height=30, text=" ")
         Name.grid(row=0,column=0,padx=30,pady=0)

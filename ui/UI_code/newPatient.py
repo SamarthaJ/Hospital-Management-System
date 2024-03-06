@@ -1,6 +1,7 @@
 import customtkinter
 from PIL import Image
 import querr as q
+import random as r
 
 class Mainboard(customtkinter.CTkFrame):
     def __init__(self, master, width:int = 720,height:int = 600, **kwargs):
@@ -93,8 +94,8 @@ class Mainboard(customtkinter.CTkFrame):
         self.ins_data = self.ins.get()
         # use self.sel_rblock for to get the block number from option menu
         # use self.sel_rnum for to get the room number from option menu
-
-        q.add_patient(name=self.name_data,aadhar=self.aadhar_data,dob=self.dob_data,mobile=self.phone_data,email=self.email_data,)
+        pid=r.randint(50000,60001)
+        q.add_patient(pid=pid,name=self.name_data,aadhar=self.aadhar_data,dob=self.dob_data,mobile=self.phone_data,email=self.email_data,address=self.address_data,insu_id=self.ins_data,sex=M)
         pass
 
     def room_block_sel(self,get):

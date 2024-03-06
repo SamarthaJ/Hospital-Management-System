@@ -1,12 +1,13 @@
 import customtkinter
 from PIL import Image
+import querr as q
 class patientlist(customtkinter.CTkFrame):
     def __init__(self, master, name:str,time:str,department:str,phone:int, width:int = 320,height:int = 30,**kwargs):
         super().__init__(master, border_width=2,height=height, width=width, fg_color="white",bg_color="transparent",**kwargs) 
         self.grid_columnconfigure((0,1,2,3,4),weight=1)
         Name = customtkinter.CTkLabel(self, text="Name: "+name,text_color="black")
-        Time = customtkinter.CTkLabel(self, text="Time: "+time,text_color="black")
-        Department = customtkinter.CTkLabel(self, text="Dept: "+department,text_color="black")
+        Time = customtkinter.CTkLabel(self, text="ID: "+time,text_color="black")
+        Department = customtkinter.CTkLabel(self, text="Ins_ID: "+department,text_color="black")
         Edit = customtkinter.CTkButton(self,text="Edit",width=20)
         Del = customtkinter.CTkButton(self,text="Delete",width=20)
         Blank = customtkinter.CTkLabel(self, width=30, height=30, text=" ")
@@ -32,19 +33,22 @@ class listofpatient(customtkinter.CTkScrollableFrame):
                         fg_color="white",
                         bg_color="transparent",
                         **kwargs)
-        for i in range(10):
+        pat=q.patientInfo()
+        x=0
+        for i in pat:
             newAppointment = patientlist(self,
-                                            name="Samartha",
-                                            time="15:30", 
-                                            department="Cardiology", 
-                                            phone=1234567890)
-            newAppointment.grid(row=i,column=0,padx=0,pady=10,sticky="nsew")
+                                            name=i[0],
+                                            time=i[1], 
+                                            department=i[2], 
+                                            phone=i[3])
+            newAppointment.grid(row=x,column=0,padx=0,pady=10,sticky="nsew")
+            x+=1
 
 
 class grid1(customtkinter.CTkFrame):
     def __init__(self, master, width:int = 320,height:int = 500, **kwargs):
         super().__init__(master, height=height, width=width,fg_color="#F1F1F1",bg_color="transparent",**kwargs)
-        label = customtkinter.CTkLabel(self, text_color="Black",text="Patient Details\n____________________________________________________________________________________________________")
+        label = customtkinter.CTkLabel(self, text_color="Black",text="Patient Details\n____________________________________________________________________________")
         label.grid(row=0,column=0,padx=10,pady=10)
 
         patientList = listofpatient(self)
