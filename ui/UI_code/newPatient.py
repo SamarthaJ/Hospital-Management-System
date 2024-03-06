@@ -95,7 +95,7 @@ class Mainboard(customtkinter.CTkFrame):
         # use self.sel_rblock for to get the block number from option menu
         # use self.sel_rnum for to get the room number from option menu
         pid=r.randint(50000,60001)
-        q.add_patient(pid=pid,name=self.name_data,aadhar=self.aadhar_data,dob=self.dob_data,mobile=self.phone_data,email=self.email_data,address=self.address_data,insu_id=self.ins_data,sex=M)
+        q.add_patient(pid=pid,name=self.name_data,aadhar=self.aadhar_data,dob=self.dob_data,mobile=self.phone_data,email=self.email_data,address=self.address_data,insu_id=self.ins_data,sex='M')
         pass
 
     def room_block_sel(self,get):
