@@ -140,4 +140,10 @@ def add_patient(pid,name,aadhar,dob,mobile,email,address,insu_id,sex):
     mycursor=db.cursor()
     mycursor.execute(f"insert into patient values('{pid}','{name}','{aadhar}','{dob}','{mobile}','{email}','{address}','{insu_id}','{sex}')")
     db.commit()
-    
+
+def patientInfo():
+    db=li.create_connection()
+    mycursor=db.cursor()
+    mycursor.execute("select name,p_id,Insurence_id,mobile from patient")
+    arr=[list(i) for i in mycursor]
+    return arr
