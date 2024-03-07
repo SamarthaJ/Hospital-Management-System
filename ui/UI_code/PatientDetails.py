@@ -48,11 +48,15 @@ class listofpatient(customtkinter.CTkScrollableFrame):
 class grid1(customtkinter.CTkFrame):
     def __init__(self, master, width:int = 320,height:int = 500, **kwargs):
         super().__init__(master, height=height, width=width,fg_color="#F1F1F1",bg_color="transparent",**kwargs)
-        label = customtkinter.CTkLabel(self, text_color="Black",text="Patient Details\n____________________________________________________________________________")
+        linecolor = "#8b8b8b"
+        label = customtkinter.CTkLabel(self, text_color="Black",text="Patient Details")
+        progressbar = customtkinter.CTkProgressBar(self, width=550,progress_color=linecolor,orientation="horizontal",)
+        progressbar.set(1)
+        progressbar.grid(row=1,column=0,padx=10,pady=5, sticky="nsew")
         label.grid(row=0,column=0,padx=10,pady=10)
 
         patientList = listofpatient(self)
-        patientList.grid(row=1,column=0,padx=10,pady=10,sticky="nsew")
+        patientList.grid(row=2,column=0,padx=10,pady=10,sticky="nsew")
 
 
 class patientcardaction(customtkinter.CTkFrame):
