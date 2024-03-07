@@ -21,6 +21,8 @@ class Mainboard(customtkinter.CTkFrame):
 
 
 
+
+
         self.name = customtkinter.CTkEntry(self, placeholder_text="Name")
         self.aadhar = customtkinter.CTkEntry(self, placeholder_text="Aadhaar number")
         self.dob = customtkinter.CTkEntry(self, placeholder_text="Date of Birth")
@@ -33,9 +35,9 @@ class Mainboard(customtkinter.CTkFrame):
         
 
 
-        newPID = "New PID here generated automatically"
+        self.newPID = "New PID here generated automatically"
 
-        self.pid_lab = customtkinter.CTkLabel(self, text=f"{newPID}")
+        self.pid_lab = customtkinter.CTkLabel(self, text=f"{self.newPID}")
         self.name_lab = customtkinter.CTkLabel(self, text="Name")
         self.aadhar_lab = customtkinter.CTkLabel(self,text="Aadhar")
         self.dob_lab = customtkinter.CTkLabel(self, text="Date of Birth")
