@@ -147,12 +147,13 @@ def patientInfo():
     arr=[list(i) for i in mycursor]
     return arr
 
-def patient_dis():
+def patient_dis(name):
     db=li.create_connection()
     mycursor=db.cursor()
-    mycursor.execute("SELECT name,TIMESTAMPDIFF(YEAR, dob, CURDATE()) AS age,sex,address,p_id FROM Patient;")
+    mycursor.execute(f"SELECT name,TIMESTAMPDIFF(YEAR, dob, CURDATE()) AS age,sex,address,p_id FROM Patient where name={name};")
     arr=[]
     for x in mycursor:
         arr.append(x)
     return arr
+
 
