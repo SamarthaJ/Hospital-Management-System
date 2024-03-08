@@ -86,7 +86,7 @@ class PatientCard(customtkinter.CTkFrame):
         super().__init__(master, height=height, width=width, bg_color="transparent", border_color="black",
                          border_width=2, fg_color="white", **kwargs)
         self.grid_columnconfigure(0,weight=1)
-        print(array[0])
+        print(array[0][0])
         print(array[0][1])
         print(array[0][2])
         print(array[0][3])
