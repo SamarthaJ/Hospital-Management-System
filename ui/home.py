@@ -163,20 +163,21 @@ class patientcardaction(customtkinter.CTkFrame):
         
 
 class patientcard(customtkinter.CTkFrame):
-    def __init__(self, master, width:int = 320,height:int = 400, **kwargs):
+    def __init__(self, master, array,width:int = 320,height:int = 400, **kwargs):
         super().__init__(master, height=height, width=width, bg_color="transparent",border_color="black",border_width=2,fg_color="white",**kwargs)
         self.grid_columnconfigure(0,weight=1)
-        Age=20
-        Sex = "Male"
-        Address = "xxx,xxx,x,x,x,x,x,x 444444"
-        ID = "PAB123"
+        self.Name = array[0][0]
+        self.Age = array[0][1]
+        self.Sex = array[0][2]
+        self.Address = array[0][3]
+        self.ID = array[0][4]
         patient_card_label = customtkinter.CTkLabel(self, text="Patient Card",text_color="black", font=customtkinter.CTkFont(size=20))
         patient_image = customtkinter.CTkLabel(self,text="",width=100,height=100,image=customtkinter.CTkImage(Image.open("image/Logo.png"),size=(100,150)))
-        patient_name_label = customtkinter.CTkLabel(self, text="Samartha", text_color="black", font=customtkinter.CTkFont(size=20))
-        patient_age_label = customtkinter.CTkLabel(self, text=f"Age: {Age}", text_color="black", font=customtkinter.CTkFont(size=20))
-        patient_sex_label = customtkinter.CTkLabel(self, text=f"Age: {Sex}", text_color="black", font=customtkinter.CTkFont(size=20))
-        patient_address_label = customtkinter.CTkLabel(self, text=f"Address: {Address}", text_color="black", font=customtkinter.CTkFont(size=12))
-        patient_ID_label = customtkinter.CTkLabel(self, text=f"Patient ID: {ID}", text_color="black", font=customtkinter.CTkFont(size=16))
+        patient_name_label = customtkinter.CTkLabel(self, text=self.Name, text_color="black", font=customtkinter.CTkFont(size=20))
+        patient_age_label = customtkinter.CTkLabel(self, text=f"Age: {self.Age}", text_color="black", font=customtkinter.CTkFont(size=20))
+        patient_sex_label = customtkinter.CTkLabel(self, text=f"Age: {self.Sex}", text_color="black", font=customtkinter.CTkFont(size=20))
+        patient_address_label = customtkinter.CTkLabel(self, text=f"Address: {self.Address}", text_color="black", font=customtkinter.CTkFont(size=12))
+        patient_ID_label = customtkinter.CTkLabel(self, text=f"Patient ID: {self.ID}", text_color="black", font=customtkinter.CTkFont(size=16))
 
 
         patient_card_label.grid(row=0,column=0, padx=10, pady=5,sticky='nsew')
@@ -192,11 +193,11 @@ class patientcard(customtkinter.CTkFrame):
 
 
 class ToplevelWindow(customtkinter.CTkToplevel):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, array,*args, **kwargs):
         super().__init__(*args, fg_color="#F1F1F1",**kwargs)
         self.geometry("350x540")
         self.title("Patient Card")
-        card = patientcard(self)
+        card = patientcard(self, array= array)
         card.grid(row=0,column=0,padx=10,pady=10,sticky="nsew")
         card_act = patientcardaction(self)
         card_act.grid(row=1,column=0,padx=10,pady=10,sticky="nsew")
@@ -211,9 +212,9 @@ class getInput:
     def GetEntry_nav(self):
         entry_value = self.nav_instance.entry.get()
         val=q.patient_dis(entry_value)
-        
+        print(val[0])
         if self.toplevel_window is None or not self.toplevel_window.winfo_exists():
-            self.toplevel_window = ToplevelWindow()
+            self.toplevel_window = ToplevelWindow(array = val)
              # create window if its None or destroyed
         else:
             self.toplevel_window.focus()  # if window exists focus it
