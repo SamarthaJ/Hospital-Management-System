@@ -166,11 +166,11 @@ class patientcard(customtkinter.CTkFrame):
     def __init__(self, master, array,width:int = 320,height:int = 400, **kwargs):
         super().__init__(master, height=height, width=width, bg_color="transparent",border_color="black",border_width=2,fg_color="white",**kwargs)
         self.grid_columnconfigure(0,weight=1)
-        self.Name = array[0][0]
-        self.Age = array[0][1]
-        self.Sex = array[0][2]
-        self.Address = array[0][3]
-        self.ID = array[0][4]
+        self.Name = array[0]
+        self.Age = array[1]
+        self.Sex = array[2]
+        self.Address = array[3]
+        self.ID = array[4]
         patient_card_label = customtkinter.CTkLabel(self, text="Patient Card",text_color="black", font=customtkinter.CTkFont(size=20))
         patient_image = customtkinter.CTkLabel(self,text="",width=100,height=100,image=customtkinter.CTkImage(Image.open("image/Logo.png"),size=(100,150)))
         patient_name_label = customtkinter.CTkLabel(self, text=self.Name, text_color="black", font=customtkinter.CTkFont(size=20))
