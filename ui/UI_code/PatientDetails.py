@@ -2,26 +2,27 @@ import customtkinter
 from PIL import Image
 import querr as q
 class patientlist(customtkinter.CTkFrame):
-    def __init__(self, master, name:str,time:str,department:str,phone:int, width:int = 320,height:int = 30,**kwargs):
+    def __init__(self, master, name:str,p_id:str,department:str,phone:int, width:int = 320,height:int = 30,**kwargs):
         super().__init__(master, border_width=2,height=height, width=width, fg_color="white",bg_color="transparent",**kwargs) 
-        p = grid2(self)
+        # p = grid1(self)
         # p = PatientCard(self,array=[name,age,sex,address,id])
         self.grid_columnconfigure((0,1,2,3,4),weight=1)
         Name = customtkinter.CTkLabel(self, text="Name: "+name,text_color="black")
-        Time = customtkinter.CTkLabel(self, text="ID: "+time,text_color="black")
+        id = customtkinter.CTkLabel(self, text="ID: "+p_id,text_color="black")
         Department = customtkinter.CTkLabel(self, text="Ins_ID: "+department,text_color="black")
         view = customtkinter.CTkButton(self,text=" 🔍 ",width=20, command=lambda: [self.view_details(name=name)])
-        Del = customtkinter.CTkButton(self,text="Delete",width=20, command=self.delete_patient)
+        Del = customtkinter.CTkButton(self,text="Delete",width=20, command=lambda: [self.delete_patient(p_id=p_id)])
         Blank = customtkinter.CTkLabel(self, width=30, height=30, text=" ")
         Name.grid(row=0,column=0,padx=10,pady=0)
-        Time.grid(row=0,column=1,padx=10,pady=0)
+        id.grid(row=0,column=1,padx=10,pady=0)
         Department.grid(row=0,column=2,padx=10,pady=0)
         view.grid(row=0,column=4,padx=10,pady=0)
         Del.grid(row=0,column=5,padx=10,pady=0)
         Blank.grid(row=0,column=3,padx=220,pady=10)
         self.toplevel_window = None
-    def delete_patient():
-        pass
+    def delete_patient(self,p_id):
+        q.delete_patient(p_id)
+
     def view_details(self, name):
         val=q.patient_dis(name)
         print(name)
@@ -51,7 +52,7 @@ class listofpatient(customtkinter.CTkScrollableFrame):
         for i in pat:
             newAppointment = patientlist(self,
                                             name=i[0],
-                                            time=i[1], 
+                                            p_id=i[1], 
                                             department=i[2], 
                                             phone=i[3])
             newAppointment.grid(row=x,column=0,padx=0,pady=10,sticky="nsew")
@@ -68,8 +69,16 @@ class grid1(customtkinter.CTkFrame):
         progressbar.grid(row=1,column=0,padx=10,pady=5, sticky="nsew")
         label.grid(row=0,column=0,padx=10,pady=10)
 
-        patientList = listofpatient(self)
-        patientList.grid(row=2,column=0,padx=10,pady=10,sticky="nsew")
+        self.patientList = listofpatient(self)
+        self.patientList.grid(row=2,column=0,padx=10,pady=10,sticky="nsew")
+
+    def delete_patient(self,p_id):
+        q.delete_patient(p_id)
+        # self.hide_tab(self=self,frame=listofpatient)
+        # self.patientList = listofpatient(self)
+        # self.patientList.grid(row=2,column=0,padx=10,pady=10,sticky="nsew")
+    # def hide_tab(self, frame):
+    #     frame.grid_remove(self)
 
 
 class patientcardaction(customtkinter.CTkFrame):
@@ -86,17 +95,13 @@ class PatientCard(customtkinter.CTkFrame):
         super().__init__(master, height=height, width=width, bg_color="transparent", border_color="black",
                          border_width=2, fg_color="white", **kwargs)
         self.grid_columnconfigure(0,weight=1)
-        print(array)
+        
         self.Name = array[0]
         self.Age = array[1]
         self.Sex = array[2]
         self.Address = array[3]
         self.ID = array[4]
-        print(self.Name)
-        print(self.Age)
-        print(self.Sex)
-        print(self.Address)
-        print(self.ID)
+        
         patient_card_label = customtkinter.CTkLabel(self, text="Patient Card",text_color="black", font=customtkinter.CTkFont(size=20))
         patient_image = customtkinter.CTkLabel(self,text="",width=100,height=100,image=customtkinter.CTkImage(Image.open("image/Logo.png"),size=(100,150)))
         patient_name_label = customtkinter.CTkLabel(self, text=self.Name, text_color="black", font=customtkinter.CTkFont(size=20))
@@ -143,5 +148,11 @@ class Mainboard(customtkinter.CTkFrame):
         super().__init__(master, height=height, width=width, bg_color="transparent",fg_color="white",**kwargs)
         grid_1 = grid1(self)
         grid_1.grid(row=0,column=0,padx=10,pady=10,sticky="nsew")
+
+    # def delete_patient(self,name):
+    #     # q.delete_patient(name)
+    #     self.hide_tab(grid1)
+    # def hide_tab(self, frame):
+    #     frame.grid_remove()
         # grid_2 = grid2(self)
         # grid_2.grid(row=0,column=1,padx=10,pady=10)
