@@ -162,3 +162,9 @@ def patient_name():
     for x in mycursor:
         arr.append(x[0])
     return arr
+
+def delete_patient(p_id):
+    db=li.create_connection()
+    mycursor=db.cursor()
+    mycursor.execute(f"DELETE FROM affiliated WHERE p_id = '{p_id}';")
+    db.commit()
