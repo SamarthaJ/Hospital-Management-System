@@ -156,4 +156,11 @@ def patient_dis(name):
         arr.append(x)
     return arr
 
-
+def patient_name():
+    db=li.create_connection()
+    mycursor=db.cursor()
+    mycursor.execute("SELECT name FROM patient")
+    arr=[]
+    for x in mycursor:
+        arr.append(x[0])
+    return arr

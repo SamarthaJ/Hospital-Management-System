@@ -143,8 +143,8 @@ class ToplevelWindow(customtkinter.CTkToplevel):
 class grid2(customtkinter.CTkFrame):
     def __init__(self, master, width:int = 320,height:int = 600, **kwargs):
         super().__init__(master, height=height, width=width, fg_color="#F1F1F1",bg_color="transparent",**kwargs)
-        self.array = ['asd','asd','asd','sad','asd']
-        self.card = PatientCard(self,array=['asd','asd','asd','sad','asd'])
+        self.array = q.patient_name()
+        self.card = PatientCard(self,self.array)
         self.card.grid(row=0,column=0,padx=10,pady=10,sticky="nsew")
         card_act = patientcardaction(self)
         card_act.grid(row=1,column=0,padx=10,pady=10,sticky="nsew")

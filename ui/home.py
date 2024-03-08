@@ -1,6 +1,7 @@
 # Lib for working 
 import customtkinter
 from PIL import Image
+import querr as q
 
 
 # Lib for to get inputs:
@@ -209,7 +210,8 @@ class getInput:
 
     def GetEntry_nav(self):
         entry_value = self.nav_instance.entry.get()
-        print(entry_value)
+        val=q.patient_dis(entry_value)
+        
         if self.toplevel_window is None or not self.toplevel_window.winfo_exists():
             self.toplevel_window = ToplevelWindow()
              # create window if its None or destroyed
