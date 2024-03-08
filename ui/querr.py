@@ -53,7 +53,6 @@ def doctors_list_by_dept():
     for x in mycursor:
         # clean_string = str(x).replace("'", "").replace("(","").replace(",","").replace(")","")
         a.append(x)
-
     return a
     
 #Used to get the count of doctors
@@ -147,3 +146,14 @@ def patientInfo():
     mycursor.execute("select name,p_id,Insurence_id,mobile from patient")
     arr=[list(i) for i in mycursor]
     return arr
+
+def patient_dis(name):
+    db=li.create_connection()
+    mycursor=db.cursor()
+    mycursor.execute(f"SELECT name,TIMESTAMPDIFF(YEAR, dob, CURDATE()) AS age,sex,address,p_id FROM Patient where name={name};")
+    arr=[]
+    for x in mycursor:
+        arr.append(x)
+    return arr
+
+
