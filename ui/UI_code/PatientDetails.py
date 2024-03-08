@@ -90,7 +90,7 @@ class PatientCard(customtkinter.CTkFrame):
         print(array[0][1])
         print(array[0][2])
         print(array[0][3])
-        print(array[0][1])
+        print(array[0][4])
         # self.Name = array[0][0]
         # self.Age = array[0][1]
         # self.Sex = array[0][2]
