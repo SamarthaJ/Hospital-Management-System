@@ -81,7 +81,8 @@ class ToplevelWindow(customtkinter.CTkToplevel):
         self.getDoc = self.Doc.get()
     
     def submit(self):
-        # q.add_appoint(self.getDoc,self.getDateTime,self.getPhone,self.getName)
+        print(self.getDateTime,self.getDoc,self.getPhone,self.getName)
+        q.add_appoint(P_id=self.getName, Phone_no=self.getPhone, Date=self.getDateTime, emp_id=self.getDoc)
         self.destroy()
 
 class Mainboard(customtkinter.CTkFrame):

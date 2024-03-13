@@ -1,6 +1,7 @@
 # This file contains all the querries that are used in the UI_code
+from datetime import datetime
 import login_SQL as li
-
+import mysql.connector
 db=li.create_connection()
 mycursor=db.cursor()
 
@@ -168,3 +169,33 @@ def delete_patient(p_id):
     mycursor=db.cursor()
     mycursor.execute(f"DELETE FROM patient WHERE p_id = '{p_id}';")
     db.commit()
+
+def add_appoint(P_id, Phone_no, Date, emp_id):
+    try:
+        db = li.create_connection()
+        mycursor = db.cursor()
+        
+        # Convert the date to the correct format (assuming Date is already a datetime object)
+        date_string = Date
+        date_format = "%Y-%m-%d %H:%M:%S"
+        date_object = datetime.strptime(date_string, date_format)
+
+        
+        # Use parameterized query to prevent SQL injection
+        sql = "INSERT INTO appointment (p_id, time, emp_id, phone_no) VALUES (%s, %s, %s, %s)"
+        val = (P_id, date_object, emp_id, Phone_no)
+        
+        mycursor.execute(sql, val)
+        
+        db.commit()
+        print("Appointment added successfully!")
+        
+    except mysql.connector.Error as e:
+        print("Error:", e)
+        
+    finally:
+        if db.is_connected():
+            mycursor.close()
+            db.close()
+
+add_appoint(P_id="50079", Phone_no="1234567890", Date="2022-03-24 13:00:00", emp_id="10001")
