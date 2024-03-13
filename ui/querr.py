@@ -198,8 +198,8 @@ def add_appoint(P_id, Phone_no, Date, emp_id):
             mycursor.close()
             db.close()
 
-def edit_patient(p_id,name,age,sex,phone,add):
+def edit_patient(p_id,name,aadhaar,dob,mobile,email,addres,insurencewId,sex):
     db=li.create_connection()
     mycursor=db.cursor()
-    mycursor.execute(f"UPDATE patient SET name='{name}',dob='{age}',mobile='{phone}',sex='{sex}',address='{add}' WHERE p_id='{p_id}'")
+    mycursor.execute(f"UPDATE patient SET name='{name}',aadhaar='{aadhaar}',dob='{dob}',mobile='{mobile}',email='{email}',addres='{addres}',insurencewId='{insurencewId}',sex='{sex}' WHERE p_id='{p_id}'")
     db.commit()
