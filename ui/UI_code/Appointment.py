@@ -82,7 +82,7 @@ class ToplevelWindow(customtkinter.CTkToplevel):
     
     def submit(self):
         print(self.getDateTime,self.getDoc,self.getPhone,self.getName)
-        q.add_appoint(P_id=self.getName, Phone_no=self.getPhone, Date=self.getDateTime, emp_id=self.getDoc)
+        # q.add_appoint(P_id=self.getName, Phone_no=self.getPhone, Date=self.getDateTime, emp_id=self.getDoc)
         self.destroy()
 
 class Mainboard(customtkinter.CTkFrame):
