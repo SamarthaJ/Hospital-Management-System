@@ -45,6 +45,7 @@ class NewToplevelWindow(customtkinter.CTkToplevel):
         Dept_lab.grid(row=5,column=0,padx=10,pady=10)
         # self.geometry("350x540")
         self.p_id = arr
+        #name--aadhaar--dob--mobile--email--addres--insurencewId--sex
     def submit(self,p_id,name,age,sex,phone,add):
         q.edit_patient(p_id,name,age,sex,phone,add)
         self.destroy()
