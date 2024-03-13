@@ -50,19 +50,30 @@ class ToplevelWindow(customtkinter.CTkToplevel):
         # Phone
         # Date:Time
         # Doctor
-
+        self.label = customtkinter.CTkLabel(self, text="Appointment Details",text_color="black")
+        self.PID = customtkinter.CTkEntry(self,placeholder_text="Patient ID")
         self.Name = customtkinter.CTkEntry(self,placeholder_text="Name of the Patient")
         self.Phone = customtkinter.CTkEntry(self,placeholder_text="Enter Phone number")
-        self.DateTime = customtkinter.CTkEntry(self,placeholder_text="Date and time")
+        self.DateTime = customtkinter.CTkEntry(self,placeholder_text="24-03-12 13:00:00")
         self.Doc = customtkinter.CTkEntry(self,placeholder_text="Name of Doctor")
-
         self.submitbutton = customtkinter.CTkButton(self, text="Submit",command=self.submit)
 
-        self.Name.grid(row=0,column=0,padx=10,pady=10)
-        self.Phone.grid(row=1,column=0,padx=10,pady=10)
-        self.DateTime.grid(row=2,column=0,padx=10,pady=10)
-        self.Doc.grid(row=3,column=0,padx=10,pady=10)
-        self.submitbutton.grid(row=4,column=0,padx=10,pady=10)
+        self.Name_lab = customtkinter.CTkLabel(self, width=100,text="Name",text_color="black",anchor="w")
+        self.Phone_lab = customtkinter.CTkLabel(self, width=100 ,text="Phone",text_color="black",anchor="w")
+        self.DateTime_lab = customtkinter.CTkLabel(self, width=100 ,text="Date and time",text_color="black",anchor="w")
+        self.Doc_lab = customtkinter.CTkLabel(self, width=100 ,text="Doctor",text_color="black",anchor="w")
+
+        self.Name_lab.grid(row=1,column=0,padx=10,pady=5)
+        self.Phone_lab.grid(row=2,column=0,padx=10,pady=5)
+        self.DateTime_lab.grid(row=3,column=0,padx=10,pady=5)
+        self.Doc_lab.grid(row=4,column=0,padx=10,pady=5)
+        self.label.grid(row=0,column=1,padx=10,pady=5)
+        self.PID.grid(row=0,column=1,padx=10,pady=5)
+        self.Name.grid(row=2,column=1,padx=10,pady=5)
+        self.Phone.grid(row=3,column=1,padx=10,pady=5)
+        self.DateTime.grid(row=4,column=1,padx=10,pady=5)
+        self.Doc.grid(row=4,column=5,padx=10,pady=5)
+        self.submitbutton.grid(row=5,column=1,padx=10,pady=5)
 
         self.getName = self.Name.get()
         self.getPhone = self.Phone.get()

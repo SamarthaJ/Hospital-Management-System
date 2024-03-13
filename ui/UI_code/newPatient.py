@@ -25,7 +25,7 @@ class Mainboard(customtkinter.CTkFrame):
 
         self.name = customtkinter.CTkEntry(self, placeholder_text="Name")
         self.aadhar = customtkinter.CTkEntry(self, placeholder_text="Aadhaar number")
-        self.dob = customtkinter.CTkEntry(self, placeholder_text="Date of Birth")
+        self.dob = customtkinter.CTkEntry(self, placeholder_text="1999-04-11 (YYYY-MM-DD)")
         self.phone = customtkinter.CTkEntry(self, placeholder_text="Phone number ")
         self.email = customtkinter.CTkEntry(self, placeholder_text="Email")
         self.address = customtkinter.CTkEntry(self, placeholder_text="Address")

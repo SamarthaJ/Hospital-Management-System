@@ -154,10 +154,11 @@ class Side(customtkinter.CTkFrame):
 
 
 class patientcardaction(customtkinter.CTkFrame):
-    def __init__(self, master, width:int = 120,height:int = 100, **kwargs):
+    def __init__(self, master, width:int = 120,height:int = 550, **kwargs):
         super().__init__(master, height=height, width=width, bg_color="transparent",fg_color="#F1f1f1",**kwargs)
         statement = customtkinter.CTkButton(self, height=30,width=320,text="Statement")
         transfer = customtkinter.CTkButton(self, height=30,width=320,text="Transfer Details")
+        
         statement.grid(row=0,column=0,padx=0,pady=10,sticky="nsew")
         transfer.grid(row=1,column=0,padx=0,pady=10,sticky="nsew")
         
@@ -195,12 +196,14 @@ class patientcard(customtkinter.CTkFrame):
 class ToplevelWindow(customtkinter.CTkToplevel):
     def __init__(self, array,*args, **kwargs):
         super().__init__(*args, fg_color="#F1F1F1",**kwargs)
-        self.geometry("350x540")
+        self.geometry("350x580")
         self.title("Patient Card")
         card = patientcard(self, array= array)
         card.grid(row=0,column=0,padx=10,pady=10,sticky="nsew")
         card_act = patientcardaction(self)
         card_act.grid(row=1,column=0,padx=10,pady=10,sticky="nsew")
+        close = customtkinter.CTkButton(self, height=30,width=320,text="Close",command=self.destroy)
+        close.grid(row=2,column=0,padx=0,pady=10,sticky="s")
 
 
 

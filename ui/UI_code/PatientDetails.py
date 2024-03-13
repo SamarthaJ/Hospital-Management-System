@@ -3,6 +3,52 @@ from PIL import Image
 import querr as q
 
 
+class NewToplevelWindow(customtkinter.CTkToplevel):
+    def __init__(self, *args, arr, **kwargs):
+        super().__init__(*args, fg_color="#F1F1F1", **kwargs)
+
+        label = customtkinter.CTkLabel(self,text="Edit Patient Details", text_color="black")
+        label.grid(row=0,column=0,padx=10,pady=10)
+
+        Name = customtkinter.CTkEntry(self, placeholder_text="Name of the Patient")
+        Phone = customtkinter.CTkEntry(self, placeholder_text="Phone number")
+        Age = customtkinter.CTkEntry(self, placeholder_text="Age")
+        sex = customtkinter.CTkEntry(self, placeholder_text="Sex")
+        Address = customtkinter.CTkEntry(self, placeholder_text="Department")
+
+        submitbutton = customtkinter.CTkButton(self, text="Submit",command=lambda: self.submit(arr[4],Name.get(),Age.get(),sex.get(),Phone.get(),Address.get()))
+
+        Name_lab = customtkinter.CTkLabel(self, width=100, text="Name", text_color="black", anchor="w")
+        Age_lab = customtkinter.CTkLabel(self, width=100, text="Age", text_color="black", anchor="w")
+        sex_lab = customtkinter.CTkLabel(self, width=100, text="Sex", text_color="black", anchor="w")
+        Phone_lab = customtkinter.CTkLabel(self, width=100, text="Phone", text_color="black", anchor="w")
+        Dept_lab = customtkinter.CTkLabel(self, width=100, text="Department", text_color="black", anchor="w")
+
+        Name.insert(0,arr[0])
+        sex.insert(0,arr[2])
+        Age.insert(0,arr[1])
+        Phone.insert(0,arr[1])
+        Address.insert(0,arr[3])
+        
+        Name.grid(row=1,column=1,padx=10,pady=10)
+        sex.grid(row=2,column=1,padx=10,pady=10)
+        Age.grid(row=3,column=1,padx=10,pady=10)
+        Phone.grid(row=4,column=1,padx=10,pady=10)
+        Address.grid(row=5,column=1,padx=10,pady=10)
+
+        submitbutton.grid(row=6,column=1,padx=10,pady=10)
+        
+        Name_lab.grid(row=1,column=0,padx=10,pady=10)
+        sex_lab.grid(row=2,column=0,padx=10,pady=10)
+        Age_lab.grid(row=3,column=0,padx=10,pady=10)
+        Phone_lab.grid(row=4,column=0,padx=10,pady=10)
+        Dept_lab.grid(row=5,column=0,padx=10,pady=10)
+        # self.geometry("350x540")
+        self.p_id = arr
+    def submit(self,p_id,name,age,sex,phone,dept):
+        print(p_id,name,age,sex,phone,dept)
+        # q.edit_patient(p_id,name,age,sex,phone,dept)
+        self.destroy()
 class patientlist(customtkinter.CTkFrame):
     def __init__(self, master, name:str,p_id:str,department:str,phone:int, width:int = 320,height:int = 30,**kwargs):
         super().__init__(master, border_width=2,height=height, width=width, fg_color="white",bg_color="transparent",**kwargs) 
@@ -11,17 +57,28 @@ class patientlist(customtkinter.CTkFrame):
         Name = customtkinter.CTkLabel(self, text="Name: "+name,text_color="black")
         id = customtkinter.CTkLabel(self, text="ID: "+p_id,text_color="black")
         Department = customtkinter.CTkLabel(self, text="Ins_ID: "+department,text_color="black")
+        edit = customtkinter.CTkButton(self,text="Edit",width=20, command=lambda: [self.edit_patient(p_id=p_id)])
         view = customtkinter.CTkButton(self,text=" 🔍 ",width=20, command=lambda: [self.view_details(name=name)])
         Del = customtkinter.CTkButton(self,text="Delete",width=20, command=lambda: [self.delete_patient(p_id=p_id)])
         Blank = customtkinter.CTkLabel(self, width=30, height=30, text=" ")
         Name.grid(row=0,column=0,padx=10,pady=0)
         id.grid(row=0,column=1,padx=10,pady=0)
         Department.grid(row=0,column=2,padx=10,pady=0)
-        view.grid(row=0,column=4,padx=10,pady=0)
-        Del.grid(row=0,column=5,padx=10,pady=0)
-        Blank.grid(row=0,column=3,padx=220,pady=10)
+        view.grid(row=0,column=5,padx=10,pady=0)
+        Del.grid(row=0,column=6,padx=10,pady=0)
+        Blank.grid(row=0,column=3,padx=200,pady=10)
+        edit.grid(row=0,column=4,padx=10,pady=0)
         self.toplevel_window = None
-        
+        self.toplevel_window2 = None
+    
+    def edit_patient(self,p_id):
+        val=q.patient_dis(name=p_id)
+        print(val)
+        if self.toplevel_window2 is None or not self.toplevel_window2.winfo_exists():
+            self.toplevel_window2 = NewToplevelWindow(arr=val)
+             # create window if its None or destroyed
+        else:
+            self.toplevel_window2.focus()  # if window exists focus it
     def delete_patient(self,p_id):
         q.delete_patient(p_id)
         self.destroy()
@@ -35,6 +92,12 @@ class patientlist(customtkinter.CTkFrame):
              # create window if its None or destroyed
         else:
             self.toplevel_window.focus()  # if window exists focus it
+
+
+
+        
+
+        
 
 class listofpatient(customtkinter.CTkScrollableFrame):
     def __init__(self, 
@@ -77,7 +140,7 @@ class grid1(customtkinter.CTkFrame):
 
 
 class patientcardaction(customtkinter.CTkFrame):
-    def __init__(self, master, width:int = 120,height:int = 100, **kwargs):
+    def __init__(self, master, width:int = 120,height:int = 150, **kwargs):
         super().__init__(master, height=height, width=width, bg_color="transparent",fg_color="#F1f1f1",**kwargs)
         statement = customtkinter.CTkButton(self, height=30,width=320,text="Statement")
         transfer = customtkinter.CTkButton(self, height=30,width=320,text="Transfer Details")
@@ -123,6 +186,8 @@ class ToplevelWindow(customtkinter.CTkToplevel):
         card.grid(row=0,column=0,padx=10,pady=10,sticky="nsew")
         card_act = patientcardaction(self)
         card_act.grid(row=1,column=0,padx=10,pady=10,sticky="nsew")
+        close = customtkinter.CTkButton(self,text="Close",command=self.destroy)
+        close.grid(row=2,column=0,padx=10,pady=10,sticky="nsew")
         
 
 class grid2(customtkinter.CTkFrame):
