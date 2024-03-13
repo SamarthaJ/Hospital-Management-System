@@ -15,7 +15,7 @@ class NewToplevelWindow(customtkinter.CTkToplevel):
         Age = customtkinter.CTkEntry(self, placeholder_text="Age")
         sex = customtkinter.CTkEntry(self, placeholder_text="Sex")
         Address = customtkinter.CTkEntry(self, placeholder_text="Department")
-
+        # arr[4] is PID change this in future if changes
         submitbutton = customtkinter.CTkButton(self, text="Submit",command=lambda: self.submit(arr[4],Name.get(),Age.get(),sex.get(),Phone.get(),Address.get()))
 
         Name_lab = customtkinter.CTkLabel(self, width=100, text="Name", text_color="black", anchor="w")
