@@ -45,9 +45,9 @@ class NewToplevelWindow(customtkinter.CTkToplevel):
         Dept_lab.grid(row=5,column=0,padx=10,pady=10)
         # self.geometry("350x540")
         self.p_id = arr
-    def submit(self,p_id,name,age,sex,phone,dept):
-        print(p_id,name,age,sex,phone,dept)
-        # q.edit_patient(p_id,name,age,sex,phone,dept)
+    def submit(self,p_id,name,age,sex,phone,add):
+        print(p_id,name,age,sex,phone,add)
+        # q.edit_patient(p_id,name,age,sex,phone,add)
         self.destroy()
 class patientlist(customtkinter.CTkFrame):
     def __init__(self, master, name:str,p_id:str,department:str,phone:int, width:int = 320,height:int = 30,**kwargs):
