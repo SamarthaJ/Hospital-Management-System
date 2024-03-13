@@ -43,10 +43,46 @@ class appointment(customtkinter.CTkScrollableFrame):
             x=+1
 
 
+class ToplevelWindow(customtkinter.CTkToplevel):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, fg_color="#F1F1F1",**kwargs)
+        # Name
+        # Phone
+        # Date:Time
+        # Doctor
+
+        self.Name = customtkinter.CTkEntry(self,placeholder_text="Name of the Patient")
+        self.Phone = customtkinter.CTkEntry(self,placeholder_text="Enter Phone number")
+        self.DateTime = customtkinter.CTkEntry(self,placeholder_text="Date and time")
+        self.Doc = customtkinter.CTkEntry(self,placeholder_text="Name of Doctor")
+
+        self.Name.grid(row=0,column=0,padx=10,pady=10)
+        self.Phone.grid(row=1,column=0,padx=10,pady=10)
+        self.DateTime.grid(row=2,column=0,padx=10,pady=10)
+        self.Doc.grid(row=3,column=0,padx=10,pady=10)
+
+        self.getName = self.Name.get()
+        self.getPhone = self.Phone.get()
+        self.getDateTime = self.DateTime.get()
+        self.getDoc = self.Doc.get()
+    
+    def submit(self):
+        q.add_appoint(self.getDoc,self.getDateTime,self.getPhone,self.getName)
+        self.destroy()
 
 class Mainboard(customtkinter.CTkFrame):
     def __init__(self, master, width:int = 720,height:int = 600, **kwargs):
         super().__init__(master, height=height, width=width, **kwargs)
         appoint_details = appointment(self)
         appoint_details.grid(row=0, column=0,padx=10,pady=10)
+        newAppoint = customtkinter.CTkButton(self, text="Add New Appointment",command=self.appoint)
+        newAppoint.grid(row=1, column=0,padx=10,pady=10)
+        self.toplevel_window = None
+
+    def appoint(self):
+        if self.toplevel_window is None or not self.toplevel_window.winfo_exists():
+            self.toplevel_window = ToplevelWindow()
+             # create window if its None or destroyed
+        else:
+            self.toplevel_window.focus()  # if window exists focus it
 

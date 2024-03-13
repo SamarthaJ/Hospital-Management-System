@@ -1,10 +1,11 @@
 import customtkinter
 from PIL import Image
 import querr as q
+
+
 class patientlist(customtkinter.CTkFrame):
     def __init__(self, master, name:str,p_id:str,department:str,phone:int, width:int = 320,height:int = 30,**kwargs):
         super().__init__(master, border_width=2,height=height, width=width, fg_color="white",bg_color="transparent",**kwargs) 
-        # p = grid1(self)
         # p = PatientCard(self,array=[name,age,sex,address,id])
         self.grid_columnconfigure((0,1,2,3,4),weight=1)
         Name = customtkinter.CTkLabel(self, text="Name: "+name,text_color="black")
@@ -20,8 +21,10 @@ class patientlist(customtkinter.CTkFrame):
         Del.grid(row=0,column=5,padx=10,pady=0)
         Blank.grid(row=0,column=3,padx=220,pady=10)
         self.toplevel_window = None
+        
     def delete_patient(self,p_id):
         q.delete_patient(p_id)
+        self.destroy()
 
     def view_details(self, name):
         val=q.patient_dis(name)
@@ -71,14 +74,6 @@ class grid1(customtkinter.CTkFrame):
 
         self.patientList = listofpatient(self)
         self.patientList.grid(row=2,column=0,padx=10,pady=10,sticky="nsew")
-
-    def delete_patient(self,p_id):
-        q.delete_patient(p_id)
-        # self.hide_tab(self=self,frame=listofpatient)
-        # self.patientList = listofpatient(self)
-        # self.patientList.grid(row=2,column=0,padx=10,pady=10,sticky="nsew")
-    # def hide_tab(self, frame):
-    #     frame.grid_remove(self)
 
 
 class patientcardaction(customtkinter.CTkFrame):
@@ -146,13 +141,5 @@ class grid2(customtkinter.CTkFrame):
 class Mainboard(customtkinter.CTkFrame):
     def __init__(self, master, width:int = 720,height:int = 600, **kwargs):
         super().__init__(master, height=height, width=width, bg_color="transparent",fg_color="white",**kwargs)
-        grid_1 = grid1(self)
-        grid_1.grid(row=0,column=0,padx=10,pady=10,sticky="nsew")
-
-    # def delete_patient(self,name):
-    #     # q.delete_patient(name)
-    #     self.hide_tab(grid1)
-    # def hide_tab(self, frame):
-    #     frame.grid_remove()
-        # grid_2 = grid2(self)
-        # grid_2.grid(row=0,column=1,padx=10,pady=10)
+        self.grid_1 = grid1(self)
+        self.grid_1.grid(row=0,column=0,padx=10,pady=10,sticky="nsew")
