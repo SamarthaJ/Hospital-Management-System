@@ -46,8 +46,8 @@ class listofdoc(customtkinter.CTkFrame):
     def __init__(self, master, width:int = 320,height:int = 400, **kwargs):
         super().__init__(master, height=height, width=width, border_color="black",border_width=2,fg_color="white",bg_color="transparent",**kwargs)
         self.grid_columnconfigure((0,1),weight=1)
-        doc = customtkinter.CTkLabel(self,text="Doctor: "+"08",text_color="black")
-        Nur = customtkinter.CTkLabel(self,text="Nurse: "+"08",text_color="black")
+        doc = customtkinter.CTkLabel(self,text="Doctor: "+q.doc_count(),text_color="black")
+        Nur = customtkinter.CTkLabel(self,text="Nurse: "+"0",text_color="black")
         doc.grid(row=0,column=0,padx=60,pady=10,sticky="ew")
         Nur.grid(row=0,column=1,padx=60,pady=10,sticky="ew")
 

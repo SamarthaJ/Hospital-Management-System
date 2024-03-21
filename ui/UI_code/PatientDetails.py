@@ -164,7 +164,7 @@ class PatientCard(customtkinter.CTkFrame):
         patient_image = customtkinter.CTkLabel(self,text="",width=100,height=100,image=customtkinter.CTkImage(Image.open("image/Logo.png"),size=(100,150)))
         patient_name_label = customtkinter.CTkLabel(self, text=self.Name, text_color="black", font=customtkinter.CTkFont(size=20))
         patient_age_label = customtkinter.CTkLabel(self, text=f"Age: {self.Age}", text_color="black", font=customtkinter.CTkFont(size=20))
-        patient_sex_label = customtkinter.CTkLabel(self, text=f"Age: {self.Sex}", text_color="black", font=customtkinter.CTkFont(size=20))
+        patient_sex_label = customtkinter.CTkLabel(self, text=f"Sex: {self.Sex}", text_color="black", font=customtkinter.CTkFont(size=20))
         patient_address_label = customtkinter.CTkLabel(self, text=f"Address: {self.Address}", text_color="black", font=customtkinter.CTkFont(size=12))
         patient_ID_label = customtkinter.CTkLabel(self, text=f"Patient ID: {self.ID}", text_color="black", font=customtkinter.CTkFont(size=16))
 

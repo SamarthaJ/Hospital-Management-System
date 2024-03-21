@@ -46,10 +46,10 @@ def deceased_patients():
     return vali
 
 #used to get the list of doctors by thier department
-def doctors_list_by_dept():
+def doctors_list_by_dept(dept):
     db=li.create_connection()
     mycursor=db.cursor()
-    mycursor.execute(f"SELECT name,emp_id,role FROM employee where role='Doctor' or role='Surgon'")
+    mycursor.execute(f"SELECT e.name,emp_id,role FROM employee e, department d where e.dept_id=d.dept_id and e.role='Doctor' or e.role='Surgon' and d.dept_name='{dept}'")
     a=[]
     for x in mycursor:
         # clean_string = str(x).replace("'", "").replace("(","").replace(",","").replace(")","")
@@ -63,7 +63,7 @@ def doc_count():
     mycursor.execute("SELECT COUNT(*) AS doctor_count FROM employee where role='Doctor' or role='Surgon'")
     for x in mycursor:
         val=x
-    vali = val[0]
+    vali = str(val[0])
     return vali
 
 #Used to get the count of nurses
@@ -203,3 +203,5 @@ def edit_patient(p_id,name,aadhaar,dob,mobile,email,addres,insurencewId,sex):
     mycursor=db.cursor()
     mycursor.execute(f"UPDATE patient SET name='{name}',aadhaar='{aadhaar}',dob='{dob}',mobile='{mobile}',email='{email}',addres='{addres}',insurencewId='{insurencewId}',sex='{sex}' WHERE p_id='{p_id}'")
     db.commit()
+
+print(doctors_list_by_dept('Cardiology'))
