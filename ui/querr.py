@@ -49,7 +49,7 @@ def deceased_patients():
 def doctors_list_by_dept(dept):
     db=li.create_connection()
     mycursor=db.cursor()
-    mycursor.execute(f"SELECT e.name,emp_id,role FROM employee e, department d where e.dept_id=d.dept_id and e.role='Doctor' or e.role='Surgon' and d.dept_name='{dept}'")
+    mycursor.execute(f"SELECT employee.name, department.dept_name, employee.emp_id FROM employee INNER JOIN department ON employee.dept_id = department.dept_id WHERE department.dept_name = '{dept}';")
     a=[]
     for x in mycursor:
         # clean_string = str(x).replace("'", "").replace("(","").replace(",","").replace(")","")
