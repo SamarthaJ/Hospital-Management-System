@@ -203,5 +203,3 @@ def edit_patient(p_id,name,aadhaar,dob,mobile,email,addres,insurencewId,sex):
     mycursor=db.cursor()
     mycursor.execute(f"UPDATE patient SET name='{name}',aadhaar='{aadhaar}',dob='{dob}',mobile='{mobile}',email='{email}',addres='{addres}',insurencewId='{insurencewId}',sex='{sex}' WHERE p_id='{p_id}'")
     db.commit()
-
-print(doctors_list_by_dept('Cardiology'))

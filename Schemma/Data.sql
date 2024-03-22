@@ -11,6 +11,18 @@ insert into employee values('Satisha','13003','13','Doctor','Kolli',554694914098
 insert into employee values('Adheesh','11006','11','Surgon','Kakinje',893869084021);
 insert into employee values('Dhruti','11009','11','Doctor','Kakinje',387183909182);
 
+insert into employee values('Neha','10016','11','Doctor','Ujire',765432109876);
+insert into employee values('Rajesh','10017','14','Surgeon','Ujire',654321098765);
+insert into employee values('Ananya','10018','14','Nurse','Ujire',543210987654);
+insert into employee values('Sanjay','10019','13','Doctor','Ujire',432109876543);
+insert into employee values('Priyanka','10020','13','Nurse','Ujire',321098765432);
+insert into employee values('Akash','10021','12','Surgeon','Ujire',210987654321);
+insert into employee values('Shweta','10022','11','Doctor','Ujire',109876543210);
+insert into employee values('Vivek','10023','12','Nurse','Ujire',98765432109);
+insert into employee values('Anita','10024','10','Doctor','Ujire',87654321098);
+insert into employee values('Aryan','10025','12','Nurse','Ujire',76543210987);
+
+
 insert into Patient values('50021','Anil',123456789012,'1999-04-11',1787849870,'123@123.com','Kasaragodu','10021','M');
 insert into Patient values('50022','Anu',064763463265,'1987-01-31',0608217811,'644@233.com','Mangaluru','12777','F');
 insert into Patient values('50034','Kantappa',027695057474,'1989-05-25',5687783133,'123@sdaf.com','Bengaluru','92371','M');

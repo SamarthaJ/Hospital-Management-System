@@ -2,13 +2,17 @@ import customtkinter
 from PIL import Image
 import querr as q
 
+
+
+
 class DeptSelect(customtkinter.CTkFrame):
-    def __init__(self, master, width: int = 350, height: int = 100, **kwargs):
+    def __init__(self, master, width: int = 350, height: int = 500, **kwargs):
         super().__init__(master, height=height, width=width, border_color="black", border_width=2, fg_color="white", bg_color="transparent", **kwargs)
         label1 = customtkinter.CTkLabel(self, text="Department", text_color="black")
         label1.grid(row=0, column=0, padx=2, pady=2)
 
-        self.selected_value = "--Please-Select--"  # Initialize selected_value with a default value
+        # new = listofemp(self, dept="Cardiology")
+        self.selected_value = "Cardiology"  # Initialize selected_value with a default value
 
         self.select = customtkinter.CTkOptionMenu(self, command=self.get_select, width=350, height=50, button_color="#e4e4e4", button_hover_color="#e4e4e4", dynamic_resizing=False, text_color="black", fg_color="#e4e4e4", bg_color="transparent")
         self.select.configure(values=q.dept_list())
@@ -19,28 +23,44 @@ class DeptSelect(customtkinter.CTkFrame):
     def get_select(self, get):
         # Stores the selected value from the option menu from dept_select class
         self.selected_value = get
-        print(self.selected_value)  # Print the selected value
+        new = listofemp(self, dept=self.selected_value)
+        new.grid(row=2, column=0, padx=2, pady=2, sticky="nsew")
+        # self.a=q.doctors_list_by_dept(self.selected_value)
+        
+        # try:
+        #     self.emp.grid_forget()
+        # except AttributeError:
+        #     pass
+        # x=4
+        # for i in self.a:
+        #     self.emp = fetchemp(self,name=i[0], ID=i[1], Role=i[2])
+        #     self.emp.grid(row=x,column=0,padx=2,pady=2,sticky="nsew")
+        #     x+=1
+        # print(self.selected_value)  # Print the selected value
 
 
 class fetchemp(customtkinter.CTkButton):
     def __init__(self, master, name,ID,Role, width:int = 350,height:int = 50, **kwargs):
-        super().__init__(master, anchor="right", height=height, width=width, border_color="black",border_width=2,fg_color="white",bg_color="transparent",text="name: " + name +"\tID: "+str(ID)+"\tRole:"+ Role,text_color="black",font=customtkinter.CTkFont(size=10),**kwargs)
-
+        super().__init__(master, anchor="right", height=height, width=width, border_color="black",border_width=2,fg_color="white",bg_color="transparent",text="name: " + name +"\tID: "+str(ID)+"\tRole:"+ Role,text_color="black",font=customtkinter.CTkFont(size=10),command=lambda:[self.view(Id = ID)],**kwargs)
+    
+    def view(ID):
+        a = q.getDoctorDetails(ID)
+        pass
 
 class listofemp(customtkinter.CTkScrollableFrame):
-    def __init__(self, master, width:int = 350,height:int = 300, **kwargs):
+    def __init__(self, master, dept:str   ,width:int = 350,height:int = 300, **kwargs):
         super().__init__(master, height=height, width=width, border_color="black",border_width=2,fg_color="white",bg_color="transparent",**kwargs)
-        a=q.doctors_list_by_dept()
-        x=0
-        for i in a:
-            emp = fetchemp(self,
-                                            name=i[0],
-                                            ID=i[1],
-                                            Role=i[2]
-                                    )
-            emp.grid(row=x,column=0,padx=2,pady=2,sticky="nsew")
-            x+=1
-
+        self.a=q.doctors_list_by_dept(dept)
+        
+        try:
+            self.emp.grid_forget()
+        except AttributeError:
+            pass
+        x=4
+        for i in self.a:
+            self.emp = fetchemp(self,name=i[0], ID=i[1], Role=i[2])
+            self.emp.grid(row=x,column=0,padx=2,pady=2,sticky="nsew")
+            x+=1  # Print the selected value
 
 class listofdoc(customtkinter.CTkFrame):
     def __init__(self, master, width:int = 320,height:int = 400, **kwargs):
@@ -63,13 +83,13 @@ class grid1(customtkinter.CTkFrame):
         super().__init__(master, height=height, width=width, fg_color="white",**kwargs)
         self.grid_rowconfigure((0,1),weight=0)
         self.grid_rowconfigure(2,weight=10)
-        sel_department = DeptSelect(self)
-        sel_department.grid(row=0,column=0,padx=2,pady=2)
-
         Listofdoc_nurse = listofdoc(self)
-        Listofdoc_nurse.grid(row=1,column=0,padx=1,pady=10)
-        emp = listofemp(self)
-        emp.grid(row=2,column=0,padx=10,pady=10,sticky="nsew")
+        Listofdoc_nurse.grid(row=0,column=0,padx=1,pady=10)
+        sel_department = DeptSelect(self)
+        sel_department.grid(row=1,column=0,padx=2,pady=2)
+
+        # emp = listofemp(self, dept="Cardiology")
+        # emp.grid(row=2,column=0,padx=10,pady=10,sticky="nsew")
 
 
 class grid2(customtkinter.CTkFrame):
