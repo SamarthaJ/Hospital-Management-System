@@ -44,8 +44,9 @@ class fetchemp(customtkinter.CTkButton):
         super().__init__(master, anchor="right", height=height, width=width, border_color="black",border_width=2,fg_color="white",bg_color="transparent",text="name: " + name +"\tID: "+str(ID)+"\tRole:"+ Role,text_color="black",font=customtkinter.CTkFont(size=10),command=lambda:[self.view(ID = ID)],**kwargs)
         self.toplevel_window2 = None
     def view(self,ID):
-        a = q.getDoctorDetails(ID)
+        a = q.getDoctorDetails(ID=ID)
         arr = a
+        print(arr)
         if self.toplevel_window2 is None or not self.toplevel_window2.winfo_exists():
             self.toplevel_window2 = grid2(arr=arr)
              # create window if its None or destroyed
@@ -122,7 +123,7 @@ class grid2(customtkinter.CTkToplevel):
         Role = customtkinter.CTkLabel(self,width=100, text="Role" , font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
         Address = customtkinter.CTkLabel(self, width=100,text="Address", font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
         Aadhar = customtkinter.CTkLabel(self, width=100,text="Aadhar", font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
-
+        print(arr)
         Id_Data = customtkinter.CTkLabel(self,width=100, text=arr[0],text_color="black",anchor="w")
         Name_Data = customtkinter.CTkLabel(self, width=100,text=arr[1],text_color="black",anchor="w")
         Department_Data = customtkinter.CTkLabel(self, width=100,text="dept",text_color="black",anchor="w")
