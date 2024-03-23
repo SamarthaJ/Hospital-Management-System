@@ -203,3 +203,11 @@ def edit_patient(p_id,name,aadhaar,dob,mobile,email,addres,insurencewId,sex):
     mycursor=db.cursor()
     mycursor.execute(f"UPDATE patient SET name='{name}',aadhaar='{aadhaar}',dob='{dob}',mobile='{mobile}',email='{email}',addres='{addres}',insurencewId='{insurencewId}',sex='{sex}' WHERE p_id='{p_id}'")
     db.commit()
+
+def getDoctorDetails(ID):
+    db=li.create_connection()
+    mycursor=db.cursor()
+    mycursor.execute(f"SELECT e.name, d.dept_name AS department, e.role, e.address, e.aadhaar FROM employee e JOIN department d ON e.dept_id = d.dept_id WHERE e.emp_id = '{ID}'")
+    a=[]
+    for x in mycursor:
+        return x

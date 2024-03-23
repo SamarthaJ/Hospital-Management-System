@@ -44,8 +44,8 @@ class fetchemp(customtkinter.CTkButton):
         super().__init__(master, anchor="right", height=height, width=width, border_color="black",border_width=2,fg_color="white",bg_color="transparent",text="name: " + name +"\tID: "+str(ID)+"\tRole:"+ Role,text_color="black",font=customtkinter.CTkFont(size=10),command=lambda:[self.view(ID = ID)],**kwargs)
         self.toplevel_window2 = None
     def view(self,ID):
-        # a = q.getDoctorDetails(ID)
-        arr = ["1111","Name","Cardiology","Role","Address","Aadhar"]
+        a = q.getDoctorDetails(ID)
+        arr = a
         if self.toplevel_window2 is None or not self.toplevel_window2.winfo_exists():
             self.toplevel_window2 = grid2(arr=arr)
              # create window if its None or destroyed
