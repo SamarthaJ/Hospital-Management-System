@@ -210,4 +210,5 @@ def getDoctorDetails(ID):
     mycursor.execute(f"SELECT e.name, d.dept_name AS department, e.role, e.address, e.aadhaar FROM employee e JOIN department d ON e.dept_id = d.dept_id WHERE e.emp_id = '{ID}'")
     a=[]
     for x in mycursor:
-        return x
+        a.append(x)
+    return a
