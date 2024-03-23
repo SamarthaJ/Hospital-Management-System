@@ -41,10 +41,16 @@ class DeptSelect(customtkinter.CTkFrame):
 
 class fetchemp(customtkinter.CTkButton):
     def __init__(self, master, name,ID,Role, width:int = 350,height:int = 50, **kwargs):
-        super().__init__(master, anchor="right", height=height, width=width, border_color="black",border_width=2,fg_color="white",bg_color="transparent",text="name: " + name +"\tID: "+str(ID)+"\tRole:"+ Role,text_color="black",font=customtkinter.CTkFont(size=10),command=lambda:[self.view(Id = ID)],**kwargs)
-    
-    def view(ID):
-        a = q.getDoctorDetails(ID)
+        super().__init__(master, anchor="right", height=height, width=width, border_color="black",border_width=2,fg_color="white",bg_color="transparent",text="name: " + name +"\tID: "+str(ID)+"\tRole:"+ Role,text_color="black",font=customtkinter.CTkFont(size=10),command=lambda:[self.view(ID = ID)],**kwargs)
+        self.toplevel_window2 = None
+    def view(self,ID):
+        # a = q.getDoctorDetails(ID)
+        arr = ["1111","Name","Cardiology","Role","Address","Aadhar"]
+        if self.toplevel_window2 is None or not self.toplevel_window2.winfo_exists():
+            self.toplevel_window2 = grid2(arr=arr)
+             # create window if its None or destroyed
+        else:
+            self.toplevel_window2.focus()  # if window exists focus it
         pass
 
 class listofemp(customtkinter.CTkScrollableFrame):
@@ -92,11 +98,58 @@ class grid1(customtkinter.CTkFrame):
         # emp.grid(row=2,column=0,padx=10,pady=10,sticky="nsew")
 
 
-class grid2(customtkinter.CTkFrame):
-    def __init__(self, master, width:int = 720,height:int = 500, **kwargs):
-        super().__init__(master, height=height, width=width, **kwargs)
-        self.grid_rowconfigure((0,1),weight=0)
-        self.grid_rowconfigure(2,weight=10)
+class grid2(customtkinter.CTkToplevel):
+    def __init__(self,*args, arr, **kwargs):
+        super().__init__(*args, fg_color="#F1F1F1", **kwargs)
+        
+        # ID
+        # Name
+        # Department
+            # ==> Get the department name from the database using department ID
+        # Role
+        # Address
+        # Aadhar
+        # dept = q.dept_name(arr[2]) 
+
+        Main_label = customtkinter.CTkLabel(self, text="Doctor Details", font=customtkinter.CTkFont(weight="bold", size=20), text_color="black")
+        Main_label.grid(row=0,column=0,columnspan=2,padx=5,pady=5,sticky="nsew")
+        
+        
+        # dept = q.dept_name(id = arr[2])
+        Id = customtkinter.CTkLabel(self,width=100, text="ID",font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Name = customtkinter.CTkLabel(self,width=100, text="Name",font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Department = customtkinter.CTkLabel(self,width=100,font=customtkinter.CTkFont(weight="bold"), text="Department", text_color="black", anchor="w")
+        Role = customtkinter.CTkLabel(self,width=100, text="Role" , font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Address = customtkinter.CTkLabel(self, width=100,text="Address", font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Aadhar = customtkinter.CTkLabel(self, width=100,text="Aadhar", font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+
+        Id_Data = customtkinter.CTkLabel(self,width=100, text=arr[0],text_color="black",anchor="w")
+        Name_Data = customtkinter.CTkLabel(self, width=100,text=arr[1],text_color="black",anchor="w")
+        Department_Data = customtkinter.CTkLabel(self, width=100,text="dept",text_color="black",anchor="w")
+        Role_Data = customtkinter.CTkLabel(self,width=100, text=arr[3],text_color="black",anchor="w")
+        Address_Data = customtkinter.CTkLabel(self, width=100,text=arr[4],text_color="black",anchor="w")
+        Aadhar_Data = customtkinter.CTkLabel(self, width=100,text=arr[5],text_color="black",anchor="w")
+
+        Id_Data.grid(row=1,column = 1, padx=2,pady=5)
+        Name_Data.grid(row=2,column = 1, padx=2,pady=5)
+        Department_Data.grid(row=3,column = 1, padx=2,pady=5)
+        Role_Data.grid(row=4,column = 1, padx=2,pady=5)
+        Address_Data.grid(row=5,column = 1, padx=2,pady=5)
+        Aadhar_Data.grid(row=6,column = 1, padx=2,pady=5)
+
+
+
+        Id.grid(row=1,column=0,padx=20,pady=5)
+        Name.grid(row=2,column=0,padx=20,pady=5)
+        Department.grid(row=3,column=0,padx=20,pady=5)
+        Role.grid(row=4,column=0,padx=20,pady=5)
+        Address.grid(row=5,column=0,padx=20,pady=5)
+        Aadhar.grid(row=6,column=0,padx=20,pady=5)
+
+        Close = customtkinter.CTkButton(self, text="Close",command=self.destroy)
+        Close.grid(row=7,column=0,padx=20,pady=5,columnspan=2)
+
+
 
 
 class Mainboard(customtkinter.CTkFrame):
@@ -106,6 +159,4 @@ class Mainboard(customtkinter.CTkFrame):
         self.grid_columnconfigure(1,weight=10)
         grid_1 = grid1(self)
         grid_1.grid(row=0,column=0,padx=10,pady=10)
-        grid_2 = grid2(self)
-        grid_2.grid(row=0,column=2,padx=10,pady=10)
 
