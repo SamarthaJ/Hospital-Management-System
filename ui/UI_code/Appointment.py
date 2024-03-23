@@ -51,6 +51,7 @@ class ToplevelWindow(customtkinter.CTkToplevel):
         # Date:Time
         # Doctor
         self.label = customtkinter.CTkLabel(self, text="Appointment Details",text_color="black")
+        self.label.grid(row=0,column=0,padx=10,pady=10)
         self.PID = customtkinter.CTkEntry(self,placeholder_text="Patient ID")
         self.Name = customtkinter.CTkEntry(self,placeholder_text="Name of the Patient")
         self.Phone = customtkinter.CTkEntry(self,placeholder_text="Enter Phone number")
