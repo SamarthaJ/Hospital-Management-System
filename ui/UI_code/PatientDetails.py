@@ -7,47 +7,98 @@ class NewToplevelWindow(customtkinter.CTkToplevel):
     def __init__(self, *args, arr, **kwargs):
         super().__init__(*args, fg_color="#F1F1F1", **kwargs)
 
-        label = customtkinter.CTkLabel(self,text="Edit Patient Details", font=customtkinter.CTkFont(weight="bold", size=20), text_color="black")
-        label.grid(row=0,column=0,padx=10,pady=10, columnspan=2)
+        # PID [*] []
+        # Name [*] []
+        # dob [*] []
+        # Sex [*] []
+        # Mobile [*] []
+        # address [*] []
+        # Aadhaar [*] []
+        # email [] []
+        # Insurance [] []
 
-        Name = customtkinter.CTkEntry(self, placeholder_text="Name of the Patient")
-        Phone = customtkinter.CTkEntry(self, placeholder_text="Phone number")
-        Age = customtkinter.CTkEntry(self, placeholder_text="Age")
-        sex = customtkinter.CTkEntry(self, placeholder_text="Sex")
-        Address = customtkinter.CTkEntry(self, placeholder_text="Department")
-        # arr[4] is PID change this in future if changes
-        submitbutton = customtkinter.CTkButton(self, text="Submit",command=lambda: self.submit(arr[4],Name.get(),Age.get(),sex.get(),Phone.get(),Address.get()))
 
-        Name_lab = customtkinter.CTkLabel(self, width=100, text="Name", text_color="black", anchor="w")
-        Age_lab = customtkinter.CTkLabel(self, width=100, text="Age", text_color="black", anchor="w")
-        sex_lab = customtkinter.CTkLabel(self, width=100, text="Sex", text_color="black", anchor="w")
-        Phone_lab = customtkinter.CTkLabel(self, width=100, text="Phone", text_color="black", anchor="w")
-        Dept_lab = customtkinter.CTkLabel(self, width=100, text="Department", text_color="black", anchor="w")
+        self.label = customtkinter.CTkLabel(self, text="Edit Patient Details",font= customtkinter.CTkFont(weight="bold", size=20),text_color="black",width=100)
+        self.label.grid(row=0,column=0,columnspan=2,padx=5,pady=5,sticky="nsew")
 
-        Name.insert(0,arr[0])
-        sex.insert(0,arr[2])
-        Age.insert(0,arr[1])
-        Phone.insert(0,arr[1])
-        Address.insert(0,arr[3])
-        
-        Name.grid(row=1,column=1,padx=10,pady=10)
-        sex.grid(row=2,column=1,padx=10,pady=10)
-        Age.grid(row=3,column=1,padx=10,pady=10)
-        Phone.grid(row=4,column=1,padx=10,pady=10)
-        Address.grid(row=5,column=1,padx=10,pady=10)
+        self.PID_lab = customtkinter.CTkLabel(self, text="PID: "+arr[0],text_color="black",font= customtkinter.CTkFont(weight="bold", size=15),anchor="w",width=100)
+        self.PID_lab.grid(row=1,column=0,columnspan=2,padx=5,pady=5,sticky="nsew")
 
-        submitbutton.grid(row=6,column=1,padx=10,pady=10,columnspan=2)
-        
-        Name_lab.grid(row=1,column=0,padx=10,pady=10)
-        sex_lab.grid(row=2,column=0,padx=10,pady=10)
-        Age_lab.grid(row=3,column=0,padx=10,pady=10)
-        Phone_lab.grid(row=4,column=0,padx=10,pady=10)
-        Dept_lab.grid(row=5,column=0,padx=10,pady=10)
+        self.Name_lab = customtkinter.CTkLabel(self, text="Name: ",text_color="black",font= customtkinter.CTkFont(weight="bold", size=15),anchor="w",width=100)
+        self.Name_lab.grid(row=2,column=0,padx=5,pady=5,sticky="nsew")
+
+        self.dob_lab = customtkinter.CTkLabel(self, text="DOB: ",text_color="black",font= customtkinter.CTkFont(weight="bold", size=15),anchor="w",width=100)
+        self.dob_lab.grid(row=3,column=0,padx=5,pady=5,sticky="nsew")
+
+        self.Sex_lab = customtkinter.CTkLabel(self, text="Sex: ",text_color="black",font= customtkinter.CTkFont(weight="bold", size=15),anchor="w",width=100)                                                             
+        self.Sex_lab.grid(row=4,column=0,padx=5,pady=5,sticky="nsew")
+
+        self.Phone_lab = customtkinter.CTkLabel(self, text="Phone: ",text_color="black",font= customtkinter.CTkFont(weight="bold", size=15),anchor="w",width=100)
+        self.Phone_lab.grid(row=5,column=0,padx=5,pady=5,sticky="nsew")
+
+        self.Address_lab = customtkinter.CTkLabel(self, text="Address: ",text_color="black",font= customtkinter.CTkFont(weight="bold", size=15),anchor="w",width=100)
+        self.Address_lab.grid(row=6,column=0,padx=5,pady=5,sticky="nsew")
+
+        self.Aadhaar_lab = customtkinter.CTkLabel(self, text="Aadhaar: ",text_color="black",font= customtkinter.CTkFont(weight="bold", size=15),anchor="w",width=100)
+        self.Aadhaar_lab.grid(row=7,column=0,padx=5,pady=5,sticky="nsew")
+
+        self.email_lab = customtkinter.CTkLabel(self, text="Email: ",text_color="black",font= customtkinter.CTkFont(weight="bold", size=15),anchor="w",width=100)
+        self.email_lab.grid(row=8,column=0,padx=5,pady=5,sticky="nsew")
+
+        self.insurance_lab = customtkinter.CTkLabel(self, text="Insurance: ",text_color="black",font= customtkinter.CTkFont(weight="bold", size=15),anchor="w",width=100)
+        self.insurance_lab.grid(row=9,column=0,padx=5,pady=5,sticky="nsew")
+
+
+        self.Name = customtkinter.CTkEntry(self,placeholder_text="Enter Name")
+        self.Name.grid(row=2,column=1,padx=5,pady=5,sticky="nsew")
+
+        self.dob = customtkinter.CTkEntry(self,placeholder_text="Enter DOB")
+        self.dob.grid(row=3,column=1,padx=5,pady=5,sticky="nsew")
+
+        self.Sex = customtkinter.CTkOptionMenu(self,values=["M","F"])
+        self.Sex.grid(row=4,column=1,padx=5,pady=5,sticky="nsew")
+
+        self.Phone = customtkinter.CTkEntry(self,placeholder_text="Enter Phone")
+        self.Phone.grid(row=5,column=1,padx=5,pady=5,sticky="nsew")
+
+        self.Address = customtkinter.CTkEntry(self,placeholder_text="Enter Address")
+        self.Address.grid(row=6,column=1,padx=5,pady=5,sticky="nsew")
+
+        self.Aadhaar = customtkinter.CTkEntry(self,placeholder_text="Enter Aadhaar")
+        self.Aadhaar.grid(row=7,column=1,padx=5,pady=5,sticky="nsew")
+
+        self.email = customtkinter.CTkEntry(self,placeholder_text="Enter Email")
+        self.email.grid(row=8,column=1,padx=5,pady=5,sticky="nsew")
+
+        self.insurance = customtkinter.CTkEntry(self,placeholder_text="Enter Insurance")
+        self.insurance.grid(row=9,column=1,padx=5,pady=5,sticky="nsew")
+
+        self.Name.insert(0,arr[1])
+        self.Aadhaar.insert(0,arr[2])
+        self.dob.insert(0,arr[3])
+        print(arr[4])
+        self.Phone.insert(0,arr[4])
+        print(arr[5])
+        self.email.insert(0,arr[5])
+        print(arr[6])
+        self.Address.insert(0,arr[6])
+        print(arr[7])
+        self.insurance.insert(0,arr[7])
+        print(arr[8])
+        self.Sex.set(arr[8])
+
+        # PID--Name--aadhaar--dob--mobile--email--addres--insurencewId--sex
+
+        self.submit = customtkinter.CTkButton(self, text="Submit",command=self.submit)
+        self.submit.grid(row=10,column=0,padx=5,pady=5,sticky="nsew",columnspan=2)
+
+
+
         # self.geometry("350x540")
-        self.p_id = arr
+        self.p_id = arr[0]
         #name--aadhaar--dob--mobile--email--addres--insurencewId--sex
-    def submit(self,p_id,name,age,sex,phone,add):
-        q.edit_patient(p_id,name,age,sex,phone,add)
+    def submit(self):
+        q.edit_patient(p_id=self.p_id,name=self.Name.get(),aadhaar=self.Aadhaar.get(),dob=self.dob.get(),mobile=self.Phone.get(),email=self.email.get(),addres=self.Address.get(),insurencewId=self.insurance.get(),sex=self.Sex.get())
         self.destroy()
 class patientlist(customtkinter.CTkFrame):
     def __init__(self, master, name:str,p_id:str,department:str,phone:int, width:int = 320,height:int = 30,**kwargs):
@@ -72,13 +123,14 @@ class patientlist(customtkinter.CTkFrame):
         self.toplevel_window2 = None
     
     def edit_patient(self,p_id):
-        val=q.patient_dis(name=p_id)
+        val=q.patient66(name=p_id)
         print(val)
         if self.toplevel_window2 is None or not self.toplevel_window2.winfo_exists():
             self.toplevel_window2 = NewToplevelWindow(arr=val)
              # create window if its None or destroyed
         else:
             self.toplevel_window2.focus()  # if window exists focus it
+        
     def delete_patient(self,p_id):
         q.delete_patient(p_id)
         self.destroy()
