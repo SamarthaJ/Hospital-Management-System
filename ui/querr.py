@@ -164,6 +164,13 @@ def patient_dis(name):
     for x in mycursor:
         return x
 
+def patient66(name):
+    db=li.create_connection()
+    mycursor=db.cursor()
+    mycursor.execute(f"SELECT * FROM Patient where name='{name}' or p_id='{name}';")
+    for x in mycursor:
+        return x
+    
 def patient_name():
     db=li.create_connection()
     mycursor=db.cursor()
