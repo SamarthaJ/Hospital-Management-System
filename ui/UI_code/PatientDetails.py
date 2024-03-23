@@ -8,7 +8,7 @@ class NewToplevelWindow(customtkinter.CTkToplevel):
         super().__init__(*args, fg_color="#F1F1F1", **kwargs)
 
         label = customtkinter.CTkLabel(self,text="Edit Patient Details", font=customtkinter.CTkFont(weight="bold", size=20), text_color="black")
-        label.grid(row=0,column=0,padx=10,pady=10)
+        label.grid(row=0,column=0,padx=10,pady=10, columnspan=2)
 
         Name = customtkinter.CTkEntry(self, placeholder_text="Name of the Patient")
         Phone = customtkinter.CTkEntry(self, placeholder_text="Phone number")
@@ -36,7 +36,7 @@ class NewToplevelWindow(customtkinter.CTkToplevel):
         Phone.grid(row=4,column=1,padx=10,pady=10)
         Address.grid(row=5,column=1,padx=10,pady=10)
 
-        submitbutton.grid(row=6,column=1,padx=10,pady=10)
+        submitbutton.grid(row=6,column=1,padx=10,pady=10,columnspan=2)
         
         Name_lab.grid(row=1,column=0,padx=10,pady=10)
         sex_lab.grid(row=2,column=0,padx=10,pady=10)
