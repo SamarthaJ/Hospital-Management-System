@@ -55,6 +55,15 @@ def doctors_list_by_dept(dept):
         # clean_string = str(x).replace("'", "").replace("(","").replace(",","").replace(")","")
         a.append(x)
     return a
+
+def doc(dept):
+    db=li.create_connection()
+    mycursor=db.cursor()
+    mycursor.execute(f"SELECT e.name, e.emp_id, e.role FROM employee e JOIN department d ON e.dept_id = d.dept_id WHERE d.dept_name = '{dept}';")
+    a=[]
+    for x in mycursor:
+        a.append(x)
+    return a
     
 #Used to get the count of doctors
 def doc_count():
@@ -209,5 +218,6 @@ def getDoctorDetails(ID):
     mycursor=db.cursor()
     mycursor.execute(f"SELECT e.name, d.dept_name AS department, e.role, e.address, e.aadhaar FROM employee e JOIN department d ON e.dept_id = d.dept_id WHERE e.emp_id = '{ID}'")
     a=[]
-    for a in mycursor:
-        return a
+    for x in mycursor:
+        a.append(x)
+    return a
