@@ -23,68 +23,66 @@ class Mainboard(customtkinter.CTkFrame):
 
 
 
-        self.name = customtkinter.CTkEntry(self, placeholder_text="Name")
-        self.aadhar = customtkinter.CTkEntry(self, placeholder_text="Aadhaar number")
-        self.dob = customtkinter.CTkEntry(self, placeholder_text="1999-04-11 (YYYY-MM-DD)")
-        self.phone = customtkinter.CTkEntry(self, placeholder_text="Phone number ")
-        self.email = customtkinter.CTkEntry(self, placeholder_text="Email")
-        self.address = customtkinter.CTkEntry(self, placeholder_text="Address")
-        self.ins = customtkinter.CTkEntry(self, placeholder_text="Insurence ID")
-        self.sex = customtkinter.CTkEntry(self, placeholder_text="Sex")
+        self.name = customtkinter.CTkEntry(self, placeholder_text="Name",width=300,height=40)
+        self.aadhar = customtkinter.CTkEntry(self, placeholder_text="Aadhaar number",width=300,height=40)
+        self.dob = customtkinter.CTkEntry(self, placeholder_text="1999-04-11 (YYYY-MM-DD)",width=300,height=40)
+        self.phone = customtkinter.CTkEntry(self, placeholder_text="Phone number ",width=300,height=40)
+        self.email = customtkinter.CTkEntry(self, placeholder_text="Email",width=300,height=40)
+        self.address = customtkinter.CTkEntry(self, placeholder_text="Address",width=300,height=40)
+        self.ins = customtkinter.CTkEntry(self, placeholder_text="Insurence ID",width=300,height=40)
+        self.sex = customtkinter.CTkOptionMenu(self,values=["M","F"],width=300,height=40)
 
         
 
 
         self.newPID = "New PID here generated automatically"
 
-        self.pid_lab = customtkinter.CTkLabel(self, text=f"{self.newPID}")
-        self.name_lab = customtkinter.CTkLabel(self, text="Name")
-        self.aadhar_lab = customtkinter.CTkLabel(self,text="Aadhar")
-        self.dob_lab = customtkinter.CTkLabel(self, text="Date of Birth")
-        self.phone_lab = customtkinter.CTkLabel(self, text="Phone")
-        self.email_lab = customtkinter.CTkLabel(self, text="Email")
-        self.address_lab = customtkinter.CTkLabel(self,text="Address")
-        self.ins_lab = customtkinter.CTkLabel(self, text="Insurence Id")
+        self.pid_lab = customtkinter.CTkLabel(self, text=f"{self.newPID}",anchor="w",font=customtkinter.CTkFont(size=15,weight="bold"),width=100)
+        self.name_lab = customtkinter.CTkLabel(self, text="Name",anchor="w",font=customtkinter.CTkFont(size=15,weight="bold"),width=100)
+        self.aadhar_lab = customtkinter.CTkLabel(self,text="Aadhar",anchor="w",font=customtkinter.CTkFont(size=15,weight="bold"),width=100)
+        self.dob_lab = customtkinter.CTkLabel(self, text="Date of Birth",anchor="w",font=customtkinter.CTkFont(size=15,weight="bold"),width=100)
+        self.phone_lab = customtkinter.CTkLabel(self, text="Phone",anchor="w",font=customtkinter.CTkFont(size=15,weight="bold"),width=100)
+        self.email_lab = customtkinter.CTkLabel(self, text="Email",anchor="w",font=customtkinter.CTkFont(size=15,weight="bold"),width=100)
+        self.address_lab = customtkinter.CTkLabel(self,text="Address",anchor="w",font=customtkinter.CTkFont(size=15,weight="bold"),width=100)
+        self.ins_lab = customtkinter.CTkLabel(self, text="Insurence Id",anchor="w",font=customtkinter.CTkFont(size=15,weight="bold"),width=100)
 
-        self.rblock = customtkinter.CTkOptionMenu(self,command=self.room_block_sel, values=q.block_aval())
-        self.rnum = customtkinter.CTkOptionMenu(self,command=self.room_num_sel, values=q.avaliable_rooms())
+        self.rnum = customtkinter.CTkOptionMenu(self,command=self.room_num_sel, values=q.avaliable_rooms(),width=300,height=40)
 
-        self.rblock_lab=customtkinter.CTkLabel(self,text="Room Block")
-        self.rnum_lab=customtkinter.CTkLabel(self,text="Room Number")
+        self.sex_lab=customtkinter.CTkLabel(self,text="Sex",font=customtkinter.CTkFont(size=15,weight="bold"),width=100, anchor="w")
+        self.rnum_lab=customtkinter.CTkLabel(self,text="Room Number",font=customtkinter.CTkFont(size=15,weight="bold"),width=100, anchor="w")
 
-        self.pid_lab.grid(row=0,column=1,padx=5,pady=5)
-        self.name.grid(row=1,column=1,padx=5,pady=5)
-        self.aadhar.grid(row=2,column=1,padx=5,pady=5)
-        self.dob.grid(row=3,column=1,padx=5,pady=5)
-        self.phone.grid(row=4,column=1,padx=5,pady=5)
-        self.email.grid(row=5,column=1,padx=5,pady=5)
-        self.address.grid(row=6,column=1,padx=5,pady=5)
-        self.ins.grid(row=7,column=1,padx=5,pady=5)
+        self.pid_lab.grid(row=0,column=1,padx=10,pady=5)
+        self.name.grid(row=1,column=1,padx=10,pady=5)
+        self.aadhar.grid(row=2,column=1,padx=10,pady=5)
+        self.dob.grid(row=3,column=1,padx=10,pady=5)
+        self.phone.grid(row=4,column=1,padx=10,pady=5)
+        self.email.grid(row=5,column=1,padx=10,pady=5)
+        self.address.grid(row=6,column=1,padx=10,pady=5)
+        self.ins.grid(row=7,column=1,padx=10,pady=5)
 
-        self.sel_rblock = '--Please-Select--'
-        self.sel_rnum = '--Please-Select--'
+        self.sel_rnum = 'Please Select'
 
-        self.name_lab.grid(row=1,column=0,padx=5,pady=5)
-        self.aadhar_lab.grid(row=2,column=0,padx=5,pady=5)
-        self.dob_lab.grid(row=3,column=0,padx=5,pady=5)
-        self.phone_lab.grid(row=4,column=0,padx=5,pady=5)
-        self.email_lab.grid(row=5,column=0,padx=5,pady=5)
-        self.address_lab.grid(row=6,column=0,padx=5,pady=5)
-        self.ins_lab.grid(row=7,column=0,padx=5,pady=5)
+        self.name_lab.grid(row=1,column=0,padx=10,pady=5)
+        self.aadhar_lab.grid(row=2,column=0,padx=10,pady=5)
+        self.dob_lab.grid(row=3,column=0,padx=10,pady=5)
+        self.phone_lab.grid(row=4,column=0,padx=10,pady=5)
+        self.email_lab.grid(row=5,column=0,padx=10,pady=5)
+        self.address_lab.grid(row=6,column=0,padx=10,pady=5)
+        self.ins_lab.grid(row=7,column=0,padx=10,pady=5)
 
-        self.rblock.grid(row=8, column=1,padx=5,pady=5)
-        self.rnum.grid(row=9, column=1,padx=5,pady=5)
+        self.sex.grid(row=8, column=1,padx=10,pady=5)
+        self.rnum.grid(row=9, column=1,padx=10,pady=5)
 
-        self.rblock_lab.grid(row=8, column=0,padx=5,pady=5)
-        self.rnum_lab.grid(row=9, column=0,padx=5,pady=5)
+        self.sex_lab.grid(row=8, column=0,padx=10,pady=5)
+        self.rnum_lab.grid(row=9, column=0,padx=10,pady=5)
 
-        self.rblock.set(self.sel_rblock)
+        self.sex.set("Please select")
         self.rnum.set(self.sel_rnum)
 
 
-        self.addbtn = customtkinter.CTkButton(self, text="Add New Patient",command=self.addnew)
+        self.addbtn = customtkinter.CTkButton(self, text="Add New Patient",command=self.addnew, width=300,height=40)
 
-        self.addbtn.grid(row=10, column=0,padx=5,pady=5)
+        self.addbtn.grid(row=10, column=0,padx=10,pady=5,columnspan=2)
 
     def addnew(self):
         self.name_data = self.name.get()

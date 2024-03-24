@@ -82,7 +82,7 @@ def nurse_count():
     mycursor.execute("SELECT COUNT(*) AS nurse_count FROM employee where role='Nurse'")
     for x in mycursor:
         val=x
-    vali = val[0]
+    vali = str(val[0])
     return vali
 
 #list that has all departments in the hospital. Used for the drop down menu in doctors tab
