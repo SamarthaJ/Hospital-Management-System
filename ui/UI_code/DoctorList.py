@@ -127,63 +127,28 @@ class grid2(customtkinter.CTkToplevel):
         Role.grid(row=4,column=0,padx=5,pady=5,sticky="nsew")
 
         Address = customtkinter.CTkLabel(self, width=100,text="Address", font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
-        Address.grid(row=4,column=0,padx=5,pady=5,sticky="nsew")
+        Address.grid(row=5,column=0,padx=5,pady=5,sticky="nsew")
 
         Aadhar = customtkinter.CTkLabel(self, width=100,text="Aadhar", font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
-        Aadhar.grid(row=5,column=0,padx=5,pady=5,sticky="nsew")    
+        Aadhar.grid(row=6,column=0,padx=5,pady=5,sticky="nsew")    
 
-        Id_Data = customtkinter.CTkLabel(self, width=100,text=arr[0], font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Id_Data = customtkinter.CTkLabel(self, width=100,text=arr[0][0], text_color="black", anchor="w")
         Id_Data.grid(row=1,column=1,padx=5,pady=5,sticky="nsew")
 
-        Name_Data = customtkinter.CTkLabel(self, width=100,text=arr[1], font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Name_Data = customtkinter.CTkLabel(self, width=100,text=arr[0][1], text_color="black", anchor="w")
         Name_Data.grid(row=2,column=1,padx=5,pady=5,sticky="nsew")
 
-        Department_Data = customtkinter.CTkLabel(self, width=100,text=arr[2], font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Department_Data = customtkinter.CTkLabel(self, width=100,text=arr[0][2], text_color="black", anchor="w")
         Department_Data.grid(row=3,column=1,padx=5,pady=5,sticky="nsew")
 
-        Role_Data = customtkinter.CTkLabel(self, width=100,text=arr[3], font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Role_Data = customtkinter.CTkLabel(self, width=100,text=arr[0][3], text_color="black", anchor="w")
         Role_Data.grid(row=4,column=1,padx=5,pady=5,sticky="nsew")
 
-        Address_Data = customtkinter.CTkLabel(self, width=100,text=arr[4], font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Address_Data = customtkinter.CTkLabel(self, width=100,text=arr[0][4], text_color="black", anchor="w")
         Address_Data.grid(row=5,column=1,padx=5,pady=5,sticky="nsew")
 
-        Aadhar_Data = customtkinter.CTkLabel(self, width=100,text=arr[5], font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Aadhar_Data = customtkinter.CTkLabel(self, width=100,text=arr[0][5], text_color="black", anchor="w")
         Aadhar_Data.grid(row=6,column=1,padx=5,pady=5,sticky="nsew")
-
-
-
-
-        
-        # dept = q.dept_name(id = arr[2])
-        Id = customtkinter.CTkLabel(self,width=100, text="ID",font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
-        Name = customtkinter.CTkLabel(self,width=100, text="Name",font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
-        Department = customtkinter.CTkLabel(self,width=100,font=customtkinter.CTkFont(weight="bold"), text="Department", text_color="black", anchor="w")
-        Role = customtkinter.CTkLabel(self,width=100, text="Role" , font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
-        Address = customtkinter.CTkLabel(self, width=100,text="Address", font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
-        Aadhar = customtkinter.CTkLabel(self, width=100,text="Aadhar", font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
-        print(arr)
-        Id_Data = customtkinter.CTkLabel(self,width=100, text=arr[0],text_color="black",anchor="w")
-        Name_Data = customtkinter.CTkLabel(self, width=100,text=arr[1],text_color="black",anchor="w")
-        Department_Data = customtkinter.CTkLabel(self, width=100,text="dept",text_color="black",anchor="w")
-        Role_Data = customtkinter.CTkLabel(self,width=100, text=arr[3],text_color="black",anchor="w")
-        Address_Data = customtkinter.CTkLabel(self, width=100,text=arr[4],text_color="black",anchor="w")
-        Aadhar_Data = customtkinter.CTkLabel(self, width=100,text=arr[5],text_color="black",anchor="w")
-
-        Id_Data.grid(row=1,column = 1, padx=2,pady=5)
-        Name_Data.grid(row=2,column = 1, padx=2,pady=5)
-        Department_Data.grid(row=3,column = 1, padx=2,pady=5)
-        Role_Data.grid(row=4,column = 1, padx=2,pady=5)
-        Address_Data.grid(row=5,column = 1, padx=2,pady=5)
-        Aadhar_Data.grid(row=6,column = 1, padx=2,pady=5)
-
-
-
-        Id.grid(row=1,column=0,padx=20,pady=5)
-        Name.grid(row=2,column=0,padx=20,pady=5)
-        Department.grid(row=3,column=0,padx=20,pady=5)
-        Role.grid(row=4,column=0,padx=20,pady=5)
-        Address.grid(row=5,column=0,padx=20,pady=5)
-        Aadhar.grid(row=6,column=0,padx=20,pady=5)
 
         Close = customtkinter.CTkButton(self, text="Close",command=self.destroy)
         Close.grid(row=7,column=0,padx=20,pady=5,columnspan=2)

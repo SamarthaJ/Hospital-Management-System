@@ -17,18 +17,6 @@ insert into employee values('Satisha','10004','13','Doctor','Kolli',554694914098
 insert into employee values('Adheesh','10005','11','Surgon','Kakinje',893869084021);
 insert into employee values('Dhruti','10006','11','Doctor','Kakinje',387183909182);
 
-<<<<<<< HEAD
-insert into employee values('Neha','10016','11','Doctor','Ujire',765432109876);
-insert into employee values('Rajesh','10017','14','Surgeon','Ujire',654321098765);
-insert into employee values('Ananya','10018','14','Nurse','Ujire',543210987654);
-insert into employee values('Sanjay','10019','13','Doctor','Ujire',432109876543);
-insert into employee values('Priyanka','10020','13','Nurse','Ujire',321098765432);
-insert into employee values('Akash','10021','12','Surgeon','Ujire',210987654321);
-insert into employee values('Shweta','10022','11','Doctor','Ujire',109876543210);   
-insert into employee values('Vivek','10023','12','Nurse','Ujire',98765432109);
-insert into employee values('Anita','10024','10','Doctor','Ujire',87654321098);
-insert into employee values('Aryan','10025','12','Nurse','Ujire',76543210987);
-=======
 insert into employee values('Neha','10017','11','Doctor','Ujire',765432109876);
 insert into employee values('Rajesh','10018','14','Surgeon','Ujire',654321098765);
 insert into employee values('Ananya','10019','14','Nurse','Ujire',543210987654);
@@ -849,7 +837,6 @@ insert into patient (p_id, name, aadhaar, dob, mobile, email, address, Insurence
 insert into patient (p_id, name, aadhaar, dob, mobile, email, address, Insurence_id, sex) values (50604, 'Jameson', 267616050273, '1911-10-06', '2885398103', 'jbeddoesgl@economist.com', 'Vennanthur', 864683, 'M');
 insert into patient (p_id, name, aadhaar, dob, mobile, email, address, Insurence_id, sex) values (50605, 'Irwin', 247631848682, '2003-10-21', '6065548182', 'ihindshawgm@icq.com', 'Vellottamparappu', 744861, 'M');
 insert into patient (p_id, name, aadhaar, dob, mobile, email, address, Insurence_id, sex) values (50606, 'Margette', 118454911511, '1988-05-22', '6165602626', 'mgranthamgn@livejournal.com', 'Mundargi', 788272, 'F');
->>>>>>> origin
 
 
 
