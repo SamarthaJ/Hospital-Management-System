@@ -75,7 +75,7 @@ class appointmentlist(customtkinter.CTkFrame):
         Time.grid(row=0,column=1,padx=10,pady=0)
         Department.grid(row=0,column=2,padx=10,pady=0)
         Phone.grid(row=0,column=4,padx=10,pady=0)
-        Blank.grid(row=0,column=3,padx=30,pady=10)
+        Blank.grid(row=0,column=3,padx=5,pady=10)
         
 
 
@@ -101,8 +101,8 @@ class appointment(customtkinter.CTkScrollableFrame):
                                             time=str(i[2]).replace("{","").replace("}",""),
                                             department=i[1], 
                                             phone=1234567890)
-            newAppointment.grid(row=x,column=0,padx=20,pady=2,sticky="nsew")
-            x=+1
+            newAppointment.grid(row=x,column=0,padx=5,pady=2,sticky="nsew")
+            x+=1
 
 
         

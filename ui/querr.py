@@ -232,3 +232,10 @@ def getDoctorDetails(ID):
 ID='10001'
 a=getDoctorDetails(ID)
 print(a)
+
+def patient_appoint_d(PID):
+    db=li.create_connection()
+    mycursor=db.cursor()
+    mycursor.execute(f"SELECT name,mobile FROM Patient where p_id='{PID}';")
+    for x in mycursor:
+        return x

@@ -139,7 +139,7 @@ class patientlist(customtkinter.CTkFrame):
         Department.grid(row=0,column=2,padx=10,pady=0)
         view.grid(row=0,column=5,padx=10,pady=0)
         Del.grid(row=0,column=6,padx=10,pady=0)
-        Blank.grid(row=0,column=3,padx=200,pady=10)
+        Blank.grid(row=0,column=3,padx=160,pady=10)
         edit.grid(row=0,column=4,padx=10,pady=0)
         self.toplevel_window = None
         self.toplevel_window2 = None

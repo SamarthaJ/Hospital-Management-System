@@ -14,7 +14,7 @@ class appointmentlist(customtkinter.CTkFrame):
         Time.grid(row=0,column=1,padx=30,pady=0)
         Department.grid(row=0,column=2,padx=30,pady=0)
         Phone.grid(row=0,column=4,padx=10,pady=0)
-        Blank.grid(row=0,column=3,padx=170,pady=10)
+        Blank.grid(row=0,column=3,padx=140,pady=10)
 
 
 class appointment(customtkinter.CTkScrollableFrame):
@@ -33,6 +33,7 @@ class appointment(customtkinter.CTkScrollableFrame):
                         **kwargs)
         x=0
         apintlst=q.appointment_lst()
+        print(apintlst)
         for i in apintlst:
             newAppointment = appointmentlist(self,
                                             name=i[0],
@@ -40,7 +41,8 @@ class appointment(customtkinter.CTkScrollableFrame):
                                             department=i[1], 
                                             phone=1234567890)
             newAppointment.grid(row=x,column=0,padx=0,pady=10,sticky="nsew")
-            x=+1
+            x+=1
+
 
 
 class ToplevelWindow(customtkinter.CTkToplevel):
@@ -53,6 +55,8 @@ class ToplevelWindow(customtkinter.CTkToplevel):
         self.label = customtkinter.CTkLabel(self, text="Appointment Details",text_color="black")
         self.label.grid(row=0,column=0,padx=10,pady=10)
         self.PID = customtkinter.CTkEntry(self,placeholder_text="Patient ID")
+        self.find = customtkinter.CTkButton(self, text="Find",command=self.find)
+        self.find.grid(row=5,column=0,padx=20,pady=10)
         self.Name = customtkinter.CTkEntry(self,placeholder_text="Name of the Patient")
         self.Phone = customtkinter.CTkEntry(self,placeholder_text="Enter Phone number")
         self.DateTime = customtkinter.CTkEntry(self,placeholder_text="2012-11-14 14:32:30")
@@ -76,6 +80,16 @@ class ToplevelWindow(customtkinter.CTkToplevel):
         self.Doc.grid(row=4,column=1,padx=10,pady=5)
         self.submitbutton.grid(row=5,column=1,padx=10,pady=5)
 
+    def  find(self):
+        a = q.patient_appoint_d(self.PID.get())
+        self.Name.delete(0, 'end')
+        self.Name.insert(0, a[0])
+        self.Name.configure(state= "readonly")
+        self.Phone.delete(0, 'end')
+        self.Phone.insert(0,a[1])
+        self.Phone.configure(state= "readonly")
+        
+        print(a)
     
     def submit(self):
         # self.getName = self.Name.get()
