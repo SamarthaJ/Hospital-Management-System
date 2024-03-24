@@ -45,10 +45,9 @@ class fetchemp(customtkinter.CTkButton):
         self.toplevel_window2 = None
     def view(self,ID):
         a = q.getDoctorDetails(ID=ID)
-        arr = a
-        print(arr)
+        print(a)
         if self.toplevel_window2 is None or not self.toplevel_window2.winfo_exists():
-            self.toplevel_window2 = grid2(arr=arr)
+            self.toplevel_window2 = grid2(arr=a)
              # create window if its None or destroyed
         else:
             self.toplevel_window2.focus()  # if window exists focus it
@@ -57,7 +56,7 @@ class fetchemp(customtkinter.CTkButton):
 class listofemp(customtkinter.CTkScrollableFrame):
     def __init__(self, master, dept:str   ,width:int = 350,height:int = 300, **kwargs):
         super().__init__(master, height=height, width=width, border_color="black",border_width=2,fg_color="white",bg_color="transparent",**kwargs)
-        self.a=q.doctors_list_by_dept(dept)
+        self.a=q.doc(dept)
         
         try:
             self.emp.grid_forget()
@@ -115,6 +114,45 @@ class grid2(customtkinter.CTkToplevel):
         Main_label = customtkinter.CTkLabel(self, text="Doctor Details", font=customtkinter.CTkFont(weight="bold", size=20), text_color="black")
         Main_label.grid(row=0,column=0,columnspan=2,padx=5,pady=5,sticky="nsew")
         
+        Id = customtkinter.CTkLabel(self, width=100,text="ID", font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Id.grid(row=1,column=0,padx=5,pady=5,sticky="nsew")
+
+        Name = customtkinter.CTkLabel(self, width=100,text="Name", font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Name.grid(row=2,column=0,padx=5,pady=5,sticky="nsew")
+
+        Department = customtkinter.CTkLabel(self, width=100,text="Department", font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Department.grid(row=3,column=0,padx=5,pady=5,sticky="nsew")
+
+        Role = customtkinter.CTkLabel(self, width=100,text="Role", font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Role.grid(row=4,column=0,padx=5,pady=5,sticky="nsew")
+
+        Address = customtkinter.CTkLabel(self, width=100,text="Address", font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Address.grid(row=4,column=0,padx=5,pady=5,sticky="nsew")
+
+        Aadhar = customtkinter.CTkLabel(self, width=100,text="Aadhar", font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Aadhar.grid(row=5,column=0,padx=5,pady=5,sticky="nsew")    
+
+        Id_Data = customtkinter.CTkLabel(self, width=100,text=arr[0], font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Id_Data.grid(row=1,column=1,padx=5,pady=5,sticky="nsew")
+
+        Name_Data = customtkinter.CTkLabel(self, width=100,text=arr[1], font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Name_Data.grid(row=2,column=1,padx=5,pady=5,sticky="nsew")
+
+        Department_Data = customtkinter.CTkLabel(self, width=100,text=arr[2], font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Department_Data.grid(row=3,column=1,padx=5,pady=5,sticky="nsew")
+
+        Role_Data = customtkinter.CTkLabel(self, width=100,text=arr[3], font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Role_Data.grid(row=4,column=1,padx=5,pady=5,sticky="nsew")
+
+        Address_Data = customtkinter.CTkLabel(self, width=100,text=arr[4], font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Address_Data.grid(row=5,column=1,padx=5,pady=5,sticky="nsew")
+
+        Aadhar_Data = customtkinter.CTkLabel(self, width=100,text=arr[5], font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
+        Aadhar_Data.grid(row=6,column=1,padx=5,pady=5,sticky="nsew")
+
+
+
+
         
         # dept = q.dept_name(id = arr[2])
         Id = customtkinter.CTkLabel(self,width=100, text="ID",font=customtkinter.CTkFont(weight="bold"), text_color="black", anchor="w")
