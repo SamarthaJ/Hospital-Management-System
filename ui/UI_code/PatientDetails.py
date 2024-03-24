@@ -102,6 +102,22 @@ class NewToplevelWindow(customtkinter.CTkToplevel):
         validate=d.patient_details_errorfinder(self.Name.get(),self.dob.get(),self.Phone.get(),self.Address.get(), self.insurance.get(),self.Aadhaar.get(),self.email.get())
         if validate!=False:
             q.edit_patient(p_id=self.p_id,name=self.Name.get(),aadhaar=self.Aadhaar.get(),dob=self.dob.get(),mobile=self.Phone.get(),email=self.email.get(),addres=self.Address.get(),insurencewId=self.insurance.get(),sex=self.Sex.get())
+            def close_dialog():
+                dialog.destroy()
+
+            # Create a new CTk window
+            dialog = customtkinter.CTk()
+            dialog.geometry("180x120")
+            dialog.title("status")
+
+            # Error message
+            error_message = customtkinter.CTkLabel(dialog, text=" Sucessfully edited! ", font=("Arial", 12),text_color="green")
+            error_message.pack(pady=(20, 10))
+
+            # OK button to close the dialog
+            ok_button = customtkinter.CTkButton(dialog, text="Close", command=close_dialog)
+            ok_button.pack(pady=(0, 20))
+            dialog.mainloop()
             self.destroy()
 
     

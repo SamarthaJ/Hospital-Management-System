@@ -2,6 +2,7 @@ import customtkinter
 from PIL import Image
 import querr as q
 import random as r
+import dialogbox as d
 
 class Mainboard(customtkinter.CTkFrame):
     def __init__(self, master, width:int = 720,height:int = 600, **kwargs):
@@ -80,23 +81,54 @@ class Mainboard(customtkinter.CTkFrame):
         self.rnum.set(self.sel_rnum)
 
 
-        self.addbtn = customtkinter.CTkButton(self, text="Add New Patient",command=self.addnew, width=300,height=40)
+        self.addbtn = customtkinter.CTkButton(self, text="Add New Patient",command=self.validation_newPatient, width=300,height=40)
 
         self.addbtn.grid(row=10, column=0,padx=10,pady=5,columnspan=2)
 
-    def addnew(self):
-        self.name_data = self.name.get()
-        self.aadhar_data = self.aadhar.get()
-        self.dob_data = self.dob.get()
-        self.phone_data = self.phone.get()
-        self.email_data = self.email.get()
-        self.address_data = self.address.get()
-        self.ins_data = self.ins.get()
-        # use self.sel_rblock for to get the block number from option menu
-        # use self.sel_rnum for to get the room number from option menu
-        pid=r.randint(50000,60001)
-        q.add_patient(pid=pid,name=self.name_data,aadhar=self.aadhar_data,dob=self.dob_data,mobile=self.phone_data,email=self.email_data,address=self.address_data,insu_id=self.ins_data,sex='M')
-        pass
+    def validation_newPatient(self):
+        validate=d.patient_details_errorfinder(self.name.get(),self.dob.get(),self.phone.get(),self.address.get(), self.ins.get(),self.aadhar.get(),self.email.get())
+        if validate!=False:
+            self.name_data = self.name.get()
+            self.aadhar_data = self.aadhar.get()
+            self.dob_data = self.dob.get()
+            self.phone_data = self.phone.get()
+            self.email_data = self.email.get()
+            self.address_data = self.address.get()
+            self.ins_data = self.ins.get()
+            # use self.sel_rblock for to get the block number from option menu
+            # use self.sel_rnum for to get the room number from option menu
+            pid=r.randint(50000,60001)
+            q.add_patient(pid=pid,name=self.name_data,aadhar=self.aadhar_data,dob=self.dob_data,mobile=self.phone_data,email=self.email_data,address=self.address_data,insu_id=self.ins_data,sex='M')
+            self.name.delete(0,'end')
+            self.aadhar.delete(0,'end')
+            self.dob.delete(0,'end')
+            self.phone.delete(0,'end')
+            self.email.delete(0,'end')
+            self.address.delete(0,'end')
+            self.ins.delete(0,'end')
+            self.sex.set("Please select")
+            self.rnum.set("Please select")
+            
+            def close_dialog():
+                dialog.destroy()
+
+            # Create a new CTk window
+            dialog = customtkinter.CTk()
+            dialog.geometry("180x120")
+            dialog.title("status")
+
+            # Error message
+            error_message = customtkinter.CTkLabel(dialog, text=" Sucessfully added! ", font=("Arial", 12),text_color="green")
+            error_message.pack(pady=(20, 10))
+
+            # OK button to close the dialog
+            ok_button = customtkinter.CTkButton(dialog, text="Close", command=close_dialog)
+            ok_button.pack(pady=(0, 20))
+            dialog.mainloop()
+
+
+
+            
 
     def room_block_sel(self,get):
         self.sel_rblock=get

@@ -192,6 +192,27 @@ def patient_details_errorfinder(name,dob,Phone,Address,insurance,Aadhaar,email):
     
     return  True
 
+
+#----------------------------sucessfull_dialog------------------------------------------
+def sucessfull_dialog():
+    def close_dialog():
+        dialog.destroy()
+
+        # Create a new CTk window
+        dialog = ctk.CTk()
+        dialog.geometry("300x150")
+        dialog.title("Error")
+
+        # Error message
+        error_message = ctk.CTkLabel(dialog, text=" Sucessfully added! ", font=("Arial", 12),text_color="green")
+        error_message.pack(pady=(20, 10))
+
+        # OK button to close the dialog
+        ok_button = ctk.CTkButton(dialog, text="Close", command=close_dialog)
+        ok_button.pack(pady=(0, 20))
+
+        dialog.mainloop()
+    return
 #patient_details_errorfinder('1999-04-11',1234567892,898989898980,'chandan.ramesh@gmail.com')
 
 

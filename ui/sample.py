@@ -34,14 +34,14 @@
 # print(name)
 # print(address)
 
-import customtkinter as ctk
-import tkinter as tk
-from tkinter import messagebox
+# import customtkinter as ctk
+# import tkinter as tk
+# from tkinter import messagebox
 
-# Basic parameters and initializations
-ctk.set_appearance_mode("System")
-ctk.set_default_color_theme("green")
-appWidth, appHeight = 600, 700
+# # Basic parameters and initializations
+# ctk.set_appearance_mode("System")
+# ctk.set_default_color_theme("green")
+# appWidth, appHeight = 600, 700
 
 # App Class
 # class App(ctk.CTk):
@@ -132,5 +132,27 @@ from tkinter import messagebox
 # if __name__ == "__main__":
 #     app = App()
 #     app.mainloop()
+
+import customtkinter
+from customtkinter import CTkLabel, CTkButton, CTkFrame
+
+class SubmitMessagePopup(CTkFrame):
+    def __init__(self, master):
+        super().__init__(master)
+
+        self.label = CTkLabel(self, text="Your submission was successful!")
+        self.button = CTkButton(self, text="OK", command=self.destroy)
+
+        self.label.pack(pady=10)
+        self.button.pack(pady=10)
+
+def show_submit_message_popup():
+    root = customtkinter.CTk()
+    popup = SubmitMessagePopup(root)
+    popup.pack()
+    root.mainloop()
+
+# Example usage:
+show_submit_message_popup()
 
 
