@@ -19,8 +19,8 @@ name varchar(15),
 aadhaar bigint(12),
 dob date,
 mobile bigint(10),
-email varchar(25),
-address varchar(15),
+email varchar(50),
+address varchar(50),
 Insurence_id varchar(15),
 sex char(1),
 primary key (p_id,Insurence_id));
@@ -78,3 +78,4 @@ emp_id varchar(8),
 phone_no bigint(10),
 foreign key (p_id) references patient(p_id) on delete cascade,
 foreign key (emp_id) references employee(emp_id) on delete cascade);
+
