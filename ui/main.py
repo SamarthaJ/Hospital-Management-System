@@ -1,6 +1,7 @@
 import customtkinter
 import home 
 
+
 class App(customtkinter.CTk):
     def __init__(self) -> None:
         super().__init__()

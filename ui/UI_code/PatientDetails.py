@@ -1,6 +1,7 @@
 import customtkinter
 from PIL import Image
 import querr as q
+import dialogbox as d
 
 
 class NewToplevelWindow(customtkinter.CTkToplevel):
@@ -89,7 +90,7 @@ class NewToplevelWindow(customtkinter.CTkToplevel):
 
         # PID--Name--aadhaar--dob--mobile--email--addres--insurencewId--sex
 
-        self.submit = customtkinter.CTkButton(self, text="Submit",command=self.submit)
+        self.submit = customtkinter.CTkButton(self, text="Submit",command=self.details_validation)
         self.submit.grid(row=10,column=0,padx=5,pady=5,sticky="nsew",columnspan=2)
 
 
@@ -97,9 +98,14 @@ class NewToplevelWindow(customtkinter.CTkToplevel):
         # self.geometry("350x540")
         self.p_id = arr[0]
         #name--aadhaar--dob--mobile--email--addres--insurencewId--sex
-    def submit(self):
-        q.edit_patient(p_id=self.p_id,name=self.Name.get(),aadhaar=self.Aadhaar.get(),dob=self.dob.get(),mobile=self.Phone.get(),email=self.email.get(),addres=self.Address.get(),insurencewId=self.insurance.get(),sex=self.Sex.get())
-        self.destroy()
+    def details_validation(self):
+        validate=d.patient_details_errorfinder(self.Name.get(),self.dob.get(),self.Phone.get(),self.Address.get(), self.insurance.get(),self.Aadhaar.get(),self.email.get())
+        if validate!=False:
+            q.edit_patient(p_id=self.p_id,name=self.Name.get(),aadhaar=self.Aadhaar.get(),dob=self.dob.get(),mobile=self.Phone.get(),email=self.email.get(),addres=self.Address.get(),insurencewId=self.insurance.get(),sex=self.Sex.get())
+            self.destroy()
+
+    
+
 class patientlist(customtkinter.CTkFrame):
     def __init__(self, master, name:str,p_id:str,department:str,phone:int, width:int = 320,height:int = 30,**kwargs):
         super().__init__(master, border_width=2,height=height, width=width, fg_color="white",bg_color="transparent",**kwargs) 

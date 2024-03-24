@@ -54,7 +54,7 @@ class ToplevelWindow(customtkinter.CTkToplevel):
         self.PID = customtkinter.CTkEntry(self,placeholder_text="Patient ID")
         self.Name = customtkinter.CTkEntry(self,placeholder_text="Name of the Patient")
         self.Phone = customtkinter.CTkEntry(self,placeholder_text="Enter Phone number")
-        self.DateTime = customtkinter.CTkEntry(self,placeholder_text="24-03-12 13:00:00")
+        self.DateTime = customtkinter.CTkEntry(self,placeholder_text="2012-11-14 14:32:30")
         self.Doc = customtkinter.CTkEntry(self,placeholder_text="Name of Doctor")
         self.submitbutton = customtkinter.CTkButton(self, text="Submit",command=self.submit)
 
@@ -75,14 +75,21 @@ class ToplevelWindow(customtkinter.CTkToplevel):
         self.Doc.grid(row=4,column=1,padx=10,pady=5)
         self.submitbutton.grid(row=5,column=1,padx=10,pady=5)
 
-        self.getName = self.Name.get()
-        self.getPhone = self.Phone.get()
-        self.getDateTime = self.DateTime.get()
-        self.getDoc = self.Doc.get()
     
     def submit(self):
-        print(self.getDateTime,self.getDoc,self.getPhone,self.getName)
-        # q.add_appoint(P_id=self.getName, Phone_no=self.getPhone, Date=self.getDateTime, emp_id=self.getDoc)
+        # self.getName = self.Name.get()
+        
+
+        # self.getPhone = self.Phone.get()
+
+        # self.getDateTime = self.DateTime.get()
+        # print(self.getDateTime)
+
+        # self.getDoc = self.Doc.get()
+        # print(self.getDoc)
+
+        # print(self.getDateTime,self.getDoc,self.getPhone,self.getName)
+        q.add_appoint(P_id=self.Name.get(), Phone_no=self.Phone.get(), Date=self.DateTime.get(), emp_id=self.Doc.get())
         self.destroy()
 
 class Mainboard(customtkinter.CTkFrame):
