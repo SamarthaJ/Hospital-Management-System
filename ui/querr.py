@@ -223,7 +223,7 @@ def edit_patient(p_id,name,aadhaar,dob,mobile,email,addres,insurencewId,sex):
 def getDoctorDetails(ID):
     db=li.create_connection()
     mycursor=db.cursor()
-    mycursor.execute(f"SELECT e.name, d.dept_name AS department, e.role, e.address, e.aadhaar FROM employee e JOIN department d ON e.dept_id = d.dept_id WHERE e.emp_id = '{ID}'")
+    mycursor.execute(f"SELECT e.emp_id,e.name, d.dept_name AS department, e.role, e.address, e.aadhaar FROM employee e JOIN department d ON e.dept_id = d.dept_id WHERE e.emp_id = '{ID}'")
     a=[]
     for x in mycursor:
         a.append(x)

@@ -23,7 +23,7 @@ class nav(customtkinter.CTkFrame):
         super().__init__(master,width=width, height=height, fg_color="white",bg_color="white",corner_radius=100,**kwargs)
         self.grid_columnconfigure(4,weight=1)
         getInp = getInput(self)
-        Logo = customtkinter.CTkImage(light_image=Image.open("image\Logo.png"),size=(191,44))
+        Logo = customtkinter.CTkImage(light_image=Image.open("image/Logo.png"),size=(191,44))
         self.entry = customtkinter.CTkEntry(self, placeholder_text="Search Patient/Patient ID",width=411,height=40)
         Search = customtkinter.CTkButton(self,text="Search", width=32,height=32,corner_radius=50,command=getInp.GetEntry_nav)
         profile = customtkinter.CTkButton(self,text="C", width=32,height=32,corner_radius=1000)
