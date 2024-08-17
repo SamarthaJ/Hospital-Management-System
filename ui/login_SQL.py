@@ -5,6 +5,7 @@ from mysql.connector import Error
 def create_connection():
     connection = None
     try:
+        # Change with your MySQL server details
         connection = mysql.connector.connect(
             host="localhost",
             user="hospital",
